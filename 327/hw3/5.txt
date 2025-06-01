@@ -1,0 +1,54 @@
+PART 1
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+
+    # Use parameterized query to prevent SQL injection
+    query = "SELECT * FROM users WHERE username=%s AND password=%s"
+
+    # Execute the query with the parameters safely
+    result = db.execute(query, (username, password))
+
+    if result.fetchone():
+        return "Login Successful!"
+    else:
+        return "Invalid credentials"
+
+PART 2
+import html
+
+@app.route('/profile', methods=['POST'])
+def update_profile():
+    user = session['user']
+    bio = request.form['bio']
+
+    # Sanitize the user input to prevent XSS
+    sanitized_bio = html.escape(bio)
+
+    # Update the user's bio in the database
+    query = f"UPDATE users SET bio='{sanitized_bio}' WHERE username='{user}'"
+    db.execute(query)
+
+    return "Profile updated!"
+
+
+PART 3
+<form method="POST" action="/transfer">
+    {{ form.hidden_tag() }} <!-- CSRF token will be included here -->
+    <label for="recipient">Recipient:</label>
+    <input type="text" id="recipient" name="recipient" required>
+
+    <label for="amount">Amount:</label>
+    <input type="text" id="amount" name="amount" required>
+
+    <button type="submit">Transfer</button>
+</form>
+
+
+PART 4
+GET /balance-check HTTP/1.1
+Host: banking-app.com
+Cookie: session=abc123
+X-Padding: aaaaaaaaaaaaaaaaaaaaaaaa  # Added padding to ensure a fixed-size header
+Content-Length: 1000  # Define a fixed content length to ensure a constant size

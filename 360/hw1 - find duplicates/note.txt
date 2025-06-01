@@ -1,0 +1,74 @@
+/*So write a function to make a list of files.
+Then go through the list of files only comparing files that are of the same size.
+Which I believe we already have a function that does that from one of the labs
+We are supposed to use DIR* opendir(const char* name) and a few other functions
+That are in readdir(3) of the man pages i believe */
+
+/*stat.st_size is the length of the file in bytes
+
+stat.st_blocks is the number of blocks allocated for the files
+
+stat.st_blocks * stat.st_blksize
+
+#include <unistd.h>
+
+#include <sys/types.h>
+
+int truncate(const char $path, off_t, length)
+
+how to read data about directory contents
+
+opendir(3)
+readdir(3)
+scandir(3) might consider using
+seekdir(3)
+telldir(3)
+rewinddir(3)
+closedir(3)
+
+neil’s method for the first programming assignment:
+
+#include <sys/types.h>
+
+#include <dirent.h>
+
+opendir readdir closedir
+
+recursively call the following to search all directories:
+
+func(string DIR){
+
+DIR opendir(const charNAME); returns a path to the directory
+
+while(){
+
+struct dirent readdir(DIRdirp);
+
+//compare what readdir returns w null pointer
+
+}
+
+int closedir(DIR dirp);
+
+}
+
+make sure stuff has been written to disk:
+
+#include <unistd.h)
+
+coid sync(void);
+
+int fsync(int fd);
+
+neil talking about assignment:
+
+ignore special files
+invoke via ./finddups fileOrDirectory
+, can have one or multiple directories
+collect file names, dont compare yet
+create a function or set of functions that would give a list of files to compare against eachother
+./finddups with no arguments finds duplicates on the current directory
+if you cant open a file, spit out you cant open a file, do this with any errors
+compare via stat before you compare via byte by byte
+if files are the same print out the info for both files so show theyre the same
+dont look at files after the next iteration if file 1 and 4 were dupliucates then only look at 2-3 and 5+ */

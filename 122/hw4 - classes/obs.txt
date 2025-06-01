@@ -1,0 +1,34 @@
+in employee.cpp
+- Moved constructor to employee.h
+
+in employee.h
+- changed constructors
+- changed tostring function
+
+in student.cpp
+- moved constructor to student.h
+
+in student.h
+- changed constructors
+- changed tostring function 
+
+
+What I have found so far, is that in both .h files I wrote the tostring function incorrectly 
+because I forgot to include a call to the parent tostring function, which would grab the personal information of the person.
+Also, my understanding of the constructors was incorrect. I misunderstood that the constructor to the base class was inherent to the sub class.
+As well, I did not create a constructor that takes a parameter of an instantiation of the person class correctly in my second constructor. 
+So, what I needed to differently was write both constructors so that they would also "call" (if thats the right term?) the person class. 
+This is how the personal information would be "passed" (if thats also the right term?) in. 
+Lastly, I needed to include the setting of the employee id, seniority level, and rating, which I believe you accomplished through the lines:
+
+"...employeeID(eID),
+seniorityLevel(sLvl),
+rating(rtg)".
+
+I hope i have accurately described the mistakes I made, and I think I understand what I need to do differently next time. I feel that I have gained 
+a better understanding of inheritance and the construction of classes. The only question I have is did code that I quoted above effectively set the
+values of employeeID to eID, seniorityLevel to sLvl, rating to rtg?
+
+Thank You!
+
+Ethan Kanyid

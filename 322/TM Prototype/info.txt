@@ -1,0 +1,6 @@
+Course: CPTS 322
+Semester: Spring
+Year: 2025
+Instructor: Neil Corrigan
+Author: Ethan Kanyid
+Version: 0.1

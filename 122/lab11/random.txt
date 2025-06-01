@@ -1,0 +1,58 @@
+    LEFT
+    
+    /*if(GP)
+    cout << "GP: " << GP->data << endl;
+    if(P)
+    cout << "Parent: " << P->data << endl;
+    cout << "Node: " << node->data << endl;
+    if(RC && LC)
+    cout << "Left: " << LC->data << " Right: " << RC->data << endl;
+    else if(RC)
+    cout << " Right: " << RC->data << endl;
+    else if(LC)
+    cout << "Left: " << LC->data << endl;*/
+    
+    /*if(node->parent)
+    cout << "Parent: " << node->parent->data << endl;
+
+    cout << "Node: " << node->data << endl;
+
+    if(node->right && node->left)
+    cout << "Left: " << node->left->data << " Right: " << node->right->data << endl;
+    else if(node->right)
+    cout << " Right: " << node->right->data << endl;
+    else if(node->left)
+    cout << "Left: " << node->left->data << endl;
+
+    if(node->left->right)
+    cout << "Lefts left: " << node->left->right->data << endl;*/
+
+    RIGHT
+
+    /*if(GP)
+    cout << "GP: " << GP->data << endl;
+    if(P)
+    cout << "Parent: " << P->data << endl;
+    cout << "Node: " << node->data << endl;
+    if(RC && LC)
+    cout << "Left: " << LC->data << " Right: " << RC->data << endl;
+    else if(RC)
+    cout << " Right: " << RC->data << endl;
+    else if(LC)
+    cout << "Left: " << LC->data << endl;*/
+
+    /*if(node->parent)
+    cout << "Parent: " << node->parent->data << endl;
+
+    cout << "Node: " << node->data << endl;
+
+    if(node->right && node->left)
+    cout << "Left: " << node->left->data << " Right: " << node->right->data << endl;
+    else if(node->right)
+    cout << " Right: " << node->right->data << endl;
+    else if(node->left)
+    cout << "Left: " << node->left->data << endl;
+
+    if(node->right->left)
+    cout << "Rights right: " << node->right->left->data << endl;*/
+
