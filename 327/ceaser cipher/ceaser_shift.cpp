@@ -6,6 +6,7 @@ using namespace std;
 /* shifts a text by the key passed in.
 has capacity for lower case and upper case.
 keeps the character given otherwise. */
+
 string shift(string text, int key)
 {
     string shifttext = text;
@@ -13,12 +14,12 @@ string shift(string text, int key)
 
     for (int i = 0; i < text.size(); i++)
     {
-        if(text[i] >= 'A' && text[i] <= 'Z')
+        if (text[i] >= 'A' && text[i] <= 'Z')
         {
             character = (text[i] - key + 26 - 'A') % 26;
             shifttext[i] = character + 'A';
         }
-        else if(text[i] >= 'a' && text[i] <= 'z')
+        else if (text[i] >= 'a' && text[i] <= 'z')
         {
             character = (text[i] - key + 26 - 'a') % 26;
             shifttext[i] = character + 'a';
@@ -36,7 +37,7 @@ string shift(string text, int key)
     return shifttext;
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     string text = "Olssv Dvysk!";
 
