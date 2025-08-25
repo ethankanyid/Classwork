@@ -1,0 +1,92 @@
+Q1.
+ATM
+M1: Hello 
+M2: here is my card
+M3: My pin is 2815
+M4: what is my balance
+M5: can i withdraw $.42
+M6: thanks, goodbye
+
+Responses
+R1: Hello
+R2: what is your pin
+R3: You pin is correct
+R4: your balance is $0.48
+R5: allowed, your balance is now $.06
+R6: goodbye
+
+
+Q2: went to the gateway and then made some hops before arriving at google.coms ips
+
+❯ traceroute www.google.com
+traceroute to www.google.com (142.251.215.228), 64 hops max, 40 byte packets
+ 1  10.2.1.1 (10.2.1.1)  10.313 ms  8.747 ms  10.619 ms
+ 2  192.31.216.3 (192.31.216.3)  6.968 ms  6.857 ms  6.427 ms
+ 3  sea-bdr-r1.net.wsu.edu (69.166.60.249)  15.658 ms  15.551 ms  13.132 ms
+ 4  * * *
+ 5  * * *
+ 6  google-sttlwawb-c.pni.as20055.net (107.191.239.11)  25.499 ms  12.855 ms  13.888 ms
+ 7  * * *
+ 8  142.251.229.76 (142.251.229.76)  12.757 ms
+    209.85.243.96 (209.85.243.96)  12.959 ms
+    142.251.64.86 (142.251.64.86)  10.445 ms
+ 9  142.251.250.56 (142.251.250.56)  25.839 ms
+    142.251.250.52 (142.251.250.52)  13.161 ms
+    216.239.56.223 (216.239.56.223)  12.502 ms
+10  192.178.105.47 (192.178.105.47)  11.329 ms
+    172.253.79.231 (172.253.79.231)  18.642 ms
+    172.253.74.135 (172.253.74.135)  13.180 ms
+11  142.251.241.137 (142.251.241.137)  12.202 ms  14.024 ms  15.060 ms
+12  sea09s35-in-f4.1e100.net (142.251.215.228)  18.566 ms  11.288 ms  18.080 ms
+
+
+NetRange:       142.250.0.0 - 142.251.255.255
+CIDR:           142.250.0.0/15
+NetName:        GOOGLE
+NetHandle:      NET-142-250-0-0-1
+Parent:         NET142 (NET-142-0-0-0-0)
+NetType:        Direct Allocation
+OriginAS:       
+Organization:   Google LLC (GOGL)
+RegDate:        2012-05-24
+Updated:        2012-05-24
+Ref:            https://rdap.arin.net/registry/ip/142.250.0.0
+
+
+
+OrgName:        Google LLC
+OrgId:          GOGL
+Address:        1600 Amphitheatre Parkway
+City:           Mountain View
+StateProv:      CA
+PostalCode:     94043
+Country:        US
+RegDate:        2000-03-30
+Updated:        2019-10-31
+Comment:        Please note that the recommended way to file abuse complaints are located in the following links. 
+Comment:        
+Comment:        To report abuse and illegal activity: https://www.google.com/contact/
+Comment:        
+Comment:        For legal requests: http://support.google.com/legal 
+Comment:        
+Comment:        Regards, 
+Comment:        The Google Team
+Ref:            https://rdap.arin.net/registry/entity/GOGL
+
+
+OrgAbuseHandle: ABUSE5250-ARIN
+OrgAbuseName:   Abuse
+OrgAbusePhone:  +1-650-253-0000 
+OrgAbuseEmail:  email@google.com
+OrgAbuseRef:    https://rdap.arin.net/registry/entity/ABUSE5250-ARIN
+
+OrgTechHandle: ZG39-ARIN
+OrgTechName:   Google LLC
+OrgTechPhone:  +1-650-253-0000 
+OrgTechEmail:  email@google.com
+OrgTechRef:    https://rdap.arin.net/registry/entity/ZG39-ARIN
+
+Q3: 
+a. 62
+b. no, all connections are in use
+c. 26
