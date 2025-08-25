@@ -1,3 +1,7 @@
 Q1:each building has a lan and they are all connected on a man.
 the campuses are connected on wan.
-Q2:
+Q2: all traffic is on the same connection so if that goes down, service is lost
+Q3: service went down when connecting with youtube or zoom by about 30 Mbps
+Q4: 62 maximum connections
+    no new connections can be made
+    26 connections can be made with two consecutive hops
