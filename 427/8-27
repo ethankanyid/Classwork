@@ -1,0 +1,10 @@
+Q1: it allows you to break apart the different aspects of communication that may be different across systems
+and create an encapsulated approach that is standardly recognized across the internet.
+each layer is able to use its own method to create secure, consistent,
+and available communication. it also gives abstraction so that you dont have to have a unique communication
+for every app or service, you can just use a unique layer instead of recreating a new method each time
+
+Q2:
+default gateway: 10.2.1.1
+
+was able to start http server and monitor traffic on loopback interface
