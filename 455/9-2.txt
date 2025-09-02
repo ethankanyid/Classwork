@@ -1,0 +1,19 @@
+Q1: 150 is the minimum because of the server upload speed
+    - 125 is the minimum on a peer to peer because of the client with the slowest download rate
+
+Q2:
+1. smtp
+2. smtp
+3. imap
+4. tcp
+5. push
+6. pull
+7. 25
+8. 143
+
+Q3:
+1. the difference is between who is asking the questions.
+in iterative, the local dns asks the different servers.
+in recursive, they ask for you.
+in iterative, the load is local.
+in recursive its on the other domain servers.
