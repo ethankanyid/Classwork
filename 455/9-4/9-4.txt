@@ -1,0 +1,35 @@
+Q1: if the client time is off, then the buffer will be off and the loading will be out of sync
+
+Q2: the manifest file holds the information for where the server is, what it has, and what quality it is
+
+Q3: it distributes the content to multiple servers across locations so that instead of one huge central fail point, there are localized access
+
+Q4: C
+
+Socket questions
+
+Q1: ❯ python3 client.py
+Traceback (most recent call last):
+  File "/Users/ethankanyid/portfolio/code/455/client.py", line 7, in <module>
+    s.connect(("127.0.0.1", port))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+Q2: 5 connections can be made
+
+Q3: the first to arrive would be accepted and the second would be refused
+
+Q4: 127.0.0.1 uses a loopback interface which is present on almost all computers - therefore the connection never leaves your system. using your ip requires a connection out to the router and loopback
+
+Q5: client and server must use the same port because the other ports are for different services and the connection will likely be refused.
+
+Q6: tcp is used because it is a reliable connection dedicated to this conversation
+
+❯ python3 9-4.py
+Socket successfully created
+socket binded to 12345
+socket is listening
+Got connection from ('127.0.0.1', 50990)
+
+❯ python3 client.py
+Thank you for connecting

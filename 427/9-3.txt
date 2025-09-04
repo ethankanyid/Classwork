@@ -1,0 +1,2 @@
+we captured the whole four way handshake and then brute forced the password since we knew both the anonce and snonce
+Q1: greeneggsandham
