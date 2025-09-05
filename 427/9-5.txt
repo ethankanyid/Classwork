@@ -1,0 +1,13 @@
+Q1:
+different wireless security principles can be whitelisting, blacklisting, hidden ssid, firewall, wpa2/3
+attackers can spoof mac addresses, packet sniff, ddos, and brute force passwords
+
+sniffing is capturing packets from wireless communication
+evil twin is creating a fake wifi to capture credentials
+deauth is sending packets to make a client disconnect and reconnect (often to capture creds)
+capturing creds means capturing the handshake and brute forcing the password from the nonces
+mitm is capturing information through the middle
+KRACK attack forces reinstallation of keys
+
+Q2: you can see different access points on the map
+Q3: a vpn is a virtual private network
