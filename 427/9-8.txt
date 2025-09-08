@@ -1,0 +1,43 @@
+Q1: bluejacking, bluesnarfing, bluebugging
+
+Q2: ❯ system_profiler SPBluetoothDataType
+Bluetooth:
+
+      Bluetooth Controller:
+          Address: 7C:61:30:E0:97:4B
+          State: On
+          Chipset: BCM_4388
+          Discoverable: Off
+          Firmware Version: 22.5.542.2793
+          Product ID: 0x4A34
+          Supported services: 0x392039 < HFP AVRCP A2DP HID Braille LEA AACP GATT SerialPort >
+          Transport: PCIe
+          Vendor ID: 0x004C (Apple)
+      Not Connected:
+          Ethan’s Airpod Pros:
+              Address: E8:85:4B:D5:6D:25
+              Vendor ID: 0x004C
+              Product ID: 0x200E
+              Case Version: 1.4.1
+              Firmware Version: 6F21
+              Minor Type: Headphones
+              Serial Number: GWKCPRAALKKT
+              Serial Number (Left): GXDDCHAZJQH4
+              Serial Number (Right): GX9DC9D3JQH3
+          Ethan’s Apple Watch:
+              Address: 64:C7:53:C1:7A:C5
+              RSSI: -36
+          Ethan’s iPhone:
+              Address: F8:E5:CE:40:FA:2F
+              RSSI: -66
+          Living Room:
+              Address: C8:D0:83:D6:52:32
+          Rapoo BT Mouse:
+              Address: D1:01:D1:35:81:50
+              Minor Type: Mouse
+          RK N80 :
+              Address: FF:23:00:0E:2B:96
+              Battery Level: 100%
+              Minor Type: Keyboard
+
+Q3: the pc would be a master
