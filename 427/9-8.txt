@@ -41,3 +41,6 @@ Bluetooth:
               Minor Type: Keyboard
 
 Q3: the pc would be a master
+Q4: on mac
+
+We won

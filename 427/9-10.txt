@@ -1,0 +1,8 @@
+Q1
+handoff is when a device transfers from one network to another cohesively
+rss and latency
+then the device will drop connection
+Q2
+the location of the user is updated and authenticated with hlr
+
+then we spent the rest of class with cisco packet tracer to create model cellular networks and showed how devices connect
