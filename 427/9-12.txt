@@ -1,0 +1,28 @@
+Q1:
+distributed systems are machines that are distributed potentially across regions that work together to solve problems. users can spread their computing across the systems.
+
+Q2:
+a centralized system is where all computing happens from a central point of command and if this point goes down, then the system is down
+
+Q3:
+middlware acts as a bridge between different systems and processes and allows for more fluent IPC between systems. it acts between a client and server so that the user doesnt have to directly interface with the system
+
+Q4:
+a) Resource sharing - system shares cpu, ram, storage
+b) Openness - how system sees itself
+c) Concurrency - system is able to do multiple tasks
+d) Scalability - systems can allocate resources and add nodes
+e) Fault tolerance - system stays online even with faults
+f) Transparency - what parts of server are available
+
+Q5:
+A. Blockchain (Distributed Ledgers)
+nodes access the chain and the blocks are distributed so that each member has to agree when the chain is altered
+
+Q6:
+Scenario D
+its location, failure, replication, and mobility Transparency
+resources can be on any network
+resources dont have to come from one source
+resources dont show failure when one part goes down
+resources dont have to stay in one place
