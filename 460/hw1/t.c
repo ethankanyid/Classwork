@@ -35,8 +35,8 @@ int body();
 int initialize();
 int scheduler();
 
-// PROC *get_proc();
-// put_proc(PROC *p);
+PROC *get_proc();
+void put_proc(PROC *p);
 void enqueue(PROC **queue, PROC *p);
 PROC *dequeue(PROC **queue);
 
@@ -69,6 +69,69 @@ int initialize()
     printf("Initialization complete\n");
 }
 
+// 3. Write a PROC *kfork()
+//  get the proc...
+//  if there were no procs, report kfork's failure
+//  initialize the proc status, priority, ppid, parent...
+//  now to setup the kstack!
+//  first things first, lets clean up the registers by setting them to 0.
+//  now we need to make sure to call tswitch from body when the proc runs...
+//  set the ksp to point to the top of the stack
+//  enter the proc into the readyQueue, since it's now ready for primetime!
+//  return the new proc!!!
+//  function to create a process DYNAMICALLY
+PROC *kfork()
+{
+    /****************************************************************
+    Instead of creating ALL the PROCs at once, write a
+    PROC *kfork()
+    function to create a process DYNAMICALLY.
+
+    PROC *kfork()
+    {
+    (1). PROC *p = get_proc(); to get a FREE PROC from freeList;
+    if none, return 0 for FAIL;
+
+    (2). Initialize the new PROC p with
+    --------------------------
+    status   = READY;
+    priority = 1;
+    ppid = running pid;
+    parent = running;
+    --------------------------
+
+    *********** THIS IS THE MAIN PART OF THE ASSIGNMENT!!!***********
+    INITIALIZE p's kstack to make it start from body() when it runs.
+
+    To do this, PRETNED that the process called tswitch() from the
+    the entry address of body() and executed the SAVE part of tswitch()
+    to give up CPU before.
+    Initialize its kstack[ ] and ksp to comform to these.
+
+    enter p into readyQueue;
+    *****************************************************************
+
+    return p;
+    }
+    *****************************************************************/
+}
+
+// 4. Get a FREE PROC
+// get a FREE PROC from freeList; return PROC pointer;
+// return 0 if no more FREE PROCs.
+PROC *get_proc()
+{
+    // return the next proc (dequeue) from the freeList
+}
+
+// Enter p into freeList;
+void put_proc(PROC *p)
+{
+    // even though enqueue is similar, they're different enough to mean this
+    // should be unique... set the status to free and add to the linked list
+    // freeList if we had no free procs, this'll be our first!
+}
+
 // 5.Enter p into queue (by priority in the next homework)
 // create an enqueue method, use three cases:
 // Case 1: empty queue. make the passed process a new queue!
@@ -76,7 +139,6 @@ int initialize()
 // process onto head of the queue. Case 3: non-empty queue, new process needs to
 // be inserted somewhere in it. look through the processes in the queue until we
 // find a spot where the process' priority will be properly respected.
-
 void enqueue(PROC **queue, PROC *p)
 {
     PROC *tmp;
@@ -118,6 +180,14 @@ PROC *dequeue(PROC **queue)
     }
 
     return p;
+}
+
+// 6. print the queue entries in [pid, priority]->  format;
+void printQueue(PROC *queue)
+{
+    PROC *p;
+    // if we don't have a queue, say "There are no processes in this queue"
+    // if we do, print each item in the queue
 }
 
 // 7. Scheduler
