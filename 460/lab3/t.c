@@ -2,7 +2,7 @@
 #define NPROC 9
 #define SSIZE 1024 /* kstack int size */
 
-/* proc statii     */
+/* proc status */
 #define FREE 0
 #define READY 1
 #define SLEEP 2
@@ -30,6 +30,7 @@ typedef struct proc
 PROC proc[NPROC], *running; //*freeList, *readyQueue;
 int procSize = sizeof(PROC);
 int color = 0x0C;
+
 // define the functions so things don't break! cause c!
 int body();
 int initialize();
@@ -82,6 +83,10 @@ int initialize()
 //  function to create a process DYNAMICALLY
 PROC *kfork()
 {
+    // go to book
+
+    int i proc *p if (!p) p->status =
+        ready p->priority for (i = 1; i < 10; i++) p->kstack[ssize - i] = 0
     /****************************************************************
     Instead of creating ALL the PROCs at once, write a
     PROC *kfork()
@@ -121,7 +126,10 @@ PROC *kfork()
 // return 0 if no more FREE PROCs.
 PROC *get_proc()
 {
+    // go to book
     // return the next proc (dequeue) from the freeList
+    if (freeList != NULL)
+        return (dequeue)
 }
 
 // Enter p into freeList;
@@ -223,11 +231,11 @@ int main()
     printf("initializing...");
     initialize();
 
-    // printf("forking...");
-    // kfork();
+    printf("forking...");
+    kfork();
 
-    // printf("switching...");
-    // tswitch();
+    printf("switching...");
+    tswitch();
 
     printf("\nGoodbye User!\n");
 }
