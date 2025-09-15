@@ -1,0 +1,30 @@
+Q1: the fields are
+source port
+destination port
+length
+checksum
+
+Q2: the sizes are
+source port: 2 bytes
+destination port: 2 bytes
+length: 2 bytes
+checksum: 2 bytes
+
+Q3:
+the length in the packet field is 177. this is the length of the header plus the data
+the headers add up to 8 and the data is 173 bytes
+
+Q4:
+the max size of a udp packet is 65535 bytes, so you subtract the 8 bytes for the header which equals 65527 bytes
+
+Q5:
+a port is 2 bytes which is 16 bits so 2^16 - 1 = 65,535
+the highest port is 65,535
+
+Q6:
+the protocol number for udp is 17 or 0x11
+
+Q7:
+the source port of the sender is the destination port of the receiver
+and when the receiver responds, the destination port is the same as its previous souce port
+and the source port is the same as the previous destination port
