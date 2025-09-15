@@ -1,0 +1,19 @@
+Q1:
+proof of work rewards miners for showing proof of work on the block chain
+
+Q2:
+wallets and transactions are anonymous, but anyone can see what is happening, they just dont know who it is
+
+Q3:
+miners have to be rewarded because they are the ones verifying the chain
+
+Q4:
+ledger replication is secure because it has to be changed everywhere if it is going to be tampered. yet it means there is also a lot of redundancy
+- the halving effect is where the reward of bitcoin mining is halved
+
+Q5:
+bitcoin uses proof of work, while ethereum uses proof of stake
+nfts are like coins, but there is an actual picture attacthed to it as well
+
+Q6:
+smart contracts are a way to automate transactions when certain conditions are met
