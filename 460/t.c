@@ -68,7 +68,7 @@ int initialize()
     running = &proc[0];
     running->status = READY;
     running->parent = &proc[0];
-    freelist = &proc[1];
+    freeList = &proc[1];
     readyQueue = 0;
     running = &proc[0];
     printf("Initialization complete\n");
@@ -176,8 +176,8 @@ void enqueue(PROC **queue, PROC *p)
     // Case 1: empty queue. make the passed process a new queue!
     if ((*queue) == NULL)
     {
-        *(queue) = p;
-        *(queue)->next = NULL;
+        (*queue) = p;
+        (*queue)->next = NULL;
     }
     // // Case 2: non-empty queue, new process has greatest priority. insert new
     // // process onto head of the queue. else if (p->priority >
@@ -189,8 +189,8 @@ void enqueue(PROC **queue, PROC *p)
     // the process' priority will be properly respected.
     else
     {
-        p->next = *(queue);
-        *(queue) = p;
+        p->next = (*queue);
+        (*queue) = p;
     }
 }
 
@@ -205,7 +205,7 @@ PROC *dequeue(PROC **queue)
     PROC *p = *queue;
     if (*queue != NULL)
     {
-        *(queue) = *(queue)->next;
+        (*queue) = (*queue)->next;
     }
 
     return p;
@@ -286,3 +286,4 @@ int body()
             break;
         }
     }
+}
