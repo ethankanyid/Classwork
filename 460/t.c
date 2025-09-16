@@ -72,6 +72,8 @@ int initialize()
     readyQueue = 0;
     running = &proc[0];
     printf("Initialization complete\n");
+
+    return 0;
 }
 
 // 3. Write a PROC *kfork()
@@ -233,6 +235,8 @@ int scheduler()
     running = dequeue(&readyQueue);
     printf("Scheduler finished\n");
     // Use the MODIFIED scheduler() function propose in class
+
+    return 0;
 }
 
 // 8. print info on available commands.
