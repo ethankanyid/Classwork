@@ -27,7 +27,7 @@ typedef struct proc
 } PROC;
 
 /**** USE YOUR OWN io.c with YOUR printf() here *****/
-PROC proc[NPROC], *running; //*freeList, *readyQueue;
+PROC proc[NPROC], *running, *freeList, *readyQueue;
 int procSize = sizeof(PROC);
 int color = 0x0C;
 
@@ -44,6 +44,10 @@ PROC *dequeue(PROC **queue);
 void printQueue(PROC *queue);
 PROC *kfork();
 void help();
+
+extern int tswitch(void);
+extern int getc(void);
+int printf(const char *fmt, ...);
 
 // 2. Initialize the proc's
 int initialize()
@@ -83,10 +87,6 @@ int initialize()
 //  function to create a process DYNAMICALLY
 PROC *kfork()
 {
-    // go to book
-
-    int i proc *p if (!p) p->status =
-        ready p->priority for (i = 1; i < 10; i++) p->kstack[ssize - i] = 0
     /****************************************************************
     Instead of creating ALL the PROCs at once, write a
     PROC *kfork()
@@ -119,6 +119,23 @@ PROC *kfork()
     return p;
     }
     *****************************************************************/
+    int i;
+    PROC *p = get_proc(&freeList);
+    if (!p)
+    {
+        printf("no more PROC, kfork() failed\n");
+        return 0;
+    }
+    p->status = READY;
+    p->priority = 1;        // priority = 1 for all proc except P0
+    p->ppid = running->pid; // parent = running
+    /* initialize new proc's kstack[ ] */
+    for (i = 1; i < 10; i++)
+        p->kstack[SSIZE - i] = 0;     // all 0's
+    p->kstack[SSIZE - 1] = (int)body; // resume point=address of body(void)
+    p->ksp = &p->kstack[SSIZE - 9];   // proc saved sp
+    enqueue(&readyQueue, p);          // enter p into readyQueue by priority
+    return p;                         // return child PROC pointer
 }
 
 // 4. Get a FREE PROC
@@ -126,19 +143,23 @@ PROC *kfork()
 // return 0 if no more FREE PROCs.
 PROC *get_proc()
 {
-    // go to book
-    // return the next proc (dequeue) from the freeList
-    if (freeList != NULL)
-        return (dequeue)
+    PROC *p;
+    if (freeList == NULL)
+        return 0;
+    p = freeList;
+    freeList = freeList->next;
+    p->next = NULL;
+    p->status = FREE;
+    return p;
 }
 
-// Enter p into freeList;
-void put_proc(PROC *p)
-{
-    // even though enqueue is similar, they're different enough to mean this
-    // should be unique... set the status to free and add to the linked list
-    // freeList if we had no free procs, this'll be our first!
-}
+// // Enter p into freeList;
+// void put_proc(PROC *p)
+// {
+//     // even though enqueue is similar, they're different enough to mean this
+//     // should be unique... set the status to free and add to the linked list
+//     // freeList if we had no free procs, this'll be our first!
+// }
 
 // 5.Enter p into queue (by priority in the next homework)
 // create an enqueue method, use three cases:
@@ -255,7 +276,7 @@ int body()
         switch (c)
         {
         case 's':
-            do_tswitch();
+            tswitch();
             break;
         case '?':
             help();
