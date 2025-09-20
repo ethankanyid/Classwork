@@ -58,7 +58,7 @@ int initialize()
 {
     PROC *p;
     int i; //, j;
-    for (int i = 0; i < NPROC; i++)
+    for (i = 0; i < NPROC; i++)
     {
         p = &proc[i];
         p->pid = i; // pid = 0,1,2, NPROC - 1
