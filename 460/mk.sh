@@ -1,5 +1,6 @@
 echo "cleaning .o's"
    rm *.o
+   rm a.out
 
 echo compiling
    as86 -o  s.o  s.s
