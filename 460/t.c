@@ -1,4 +1,7 @@
 /************ t.c file **********************************/
+// doesnt do anything with zombies, blocks, or sleep?
+// priority doesnt matter yet?
+
 #define NPROC 9
 #define SSIZE 1024 /* kstack int size */
 
@@ -30,15 +33,17 @@ typedef struct proc
 PROC proc[NPROC], *running, *freeList, *readyQueue;
 int procSize = sizeof(PROC);
 int color = 0x0C;
+int printf(const char *fmt, ...);
 
 // define the functions so things don't break! cause c!
 int body();
 int initialize();
 int scheduler();
 
-PROC *get_proc();
-void put_proc(PROC *p);
-void enqueue(PROC **queue, PROC *p);
+PROC *get_proc(PROC **list);
+int put_proc(PROC **list, PROC *p);
+
+int enqueue(PROC **queue, PROC *p);
 PROC *dequeue(PROC **queue);
 
 void printQueue(PROC *queue);
@@ -47,13 +52,12 @@ void help();
 
 extern int tswitch(void);
 extern int getc(void);
-int printf(const char *fmt, ...);
 
 // 2. Initialize the proc's
 int initialize()
 {
     PROC *p;
-    int i, j;
+    int i; //, j;
     for (int i = 0; i < NPROC; i++)
     {
         p = &proc[i];
@@ -70,67 +74,30 @@ int initialize()
     running->parent = &proc[0];
     freeList = &proc[1];
     readyQueue = 0;
-    running = &proc[0];
     printf("Initialization complete\n");
 
     return 0;
 }
 
 // 3. Write a PROC *kfork()
-//  get the proc...
-//  if there were no procs, report kfork's failure
-//  initialize the proc status, priority, ppid, parent...
-//  now to setup the kstack!
-//  first things first, lets clean up the registers by setting them to 0.
 //  now we need to make sure to call tswitch from body when the proc runs...
-//  set the ksp to point to the top of the stack
-//  enter the proc into the readyQueue, since it's now ready for primetime!
-//  return the new proc!!!
 //  function to create a process DYNAMICALLY
 PROC *kfork()
 {
-    /****************************************************************
-    Instead of creating ALL the PROCs at once, write a
-    PROC *kfork()
-    function to create a process DYNAMICALLY.
-
-    PROC *kfork()
-    {
-    (1). PROC *p = get_proc(); to get a FREE PROC from freeList;
-    if none, return 0 for FAIL;
-
-    (2). Initialize the new PROC p with
-    --------------------------
-    status   = READY;
-    priority = 1;
-    ppid = running pid;
-    parent = running;
-    --------------------------
-
-    *********** THIS IS THE MAIN PART OF THE ASSIGNMENT!!!***********
-    INITIALIZE p's kstack to make it start from body() when it runs.
-
-    To do this, PRETNED that the process called tswitch() from the
-    the entry address of body() and executed the SAVE part of tswitch()
-    to give up CPU before.
-    Initialize its kstack[ ] and ksp to comform to these.
-
-    enter p into readyQueue;
-    *****************************************************************
-
-    return p;
-    }
-    *****************************************************************/
     int i;
-    PROC *p = get_proc(&freeList);
+    PROC *p = get_proc(&freeList); //  get the proc...
     if (!p)
     {
+        //  if there were no procs, report kfork's failure
         printf("no more PROC, kfork() failed\n");
         return 0;
     }
+
+    //  initialize the proc status, priority, ppid, parent...
     p->status = READY;
     p->priority = 1;        // priority = 1 for all proc except P0
     p->ppid = running->pid; // parent = running
+
     /* initialize new proc's kstack[ ] */
     for (i = 1; i < 10; i++)
         p->kstack[SSIZE - i] = 0;     // all 0's
@@ -143,25 +110,26 @@ PROC *kfork()
 // 4. Get a FREE PROC
 // get a FREE PROC from freeList; return PROC pointer;
 // return 0 if no more FREE PROCs.
-PROC *get_proc()
+PROC *get_proc(PROC **list)
 {
     PROC *p;
-    if (freeList == NULL)
+    if ((*list) == NULL)
         return 0;
-    p = freeList;
-    freeList = freeList->next;
+    p = *list;
+    *list = (*list)->next;
     p->next = NULL;
     p->status = FREE;
-    return p;
+    return p; //  return the new proc!!!
 }
 
-// // Enter p into freeList;
-// void put_proc(PROC *p)
-// {
-//     // even though enqueue is similar, they're different enough to mean this
-//     // should be unique... set the status to free and add to the linked list
-//     // freeList if we had no free procs, this'll be our first!
-// }
+// Enter p into freeList;
+int put_proc(PROC **list, PROC *p)
+{
+    p->status = FREE;
+    p->next = *list;
+    *list = p;
+    return 0;
+}
 
 // 5.Enter p into queue (by priority in the next homework)
 // create an enqueue method, use three cases:
@@ -170,30 +138,32 @@ PROC *get_proc()
 // process onto head of the queue. Case 3: non-empty queue, new process needs to
 // be inserted somewhere in it. look through the processes in the queue until we
 // find a spot where the process' priority will be properly respected.
-void enqueue(PROC **queue, PROC *p)
+int enqueue(PROC **queue, PROC *p)
 {
-    PROC *tmp;
-    PROC *prev;
+    PROC *q = *queue;
 
     // Case 1: empty queue. make the passed process a new queue!
-    if ((*queue) == NULL)
+    if (!q)
     {
-        (*queue) = p;
+        *queue = p;
         (*queue)->next = NULL;
     }
-    // // Case 2: non-empty queue, new process has greatest priority. insert new
-    // // process onto head of the queue. else if (p->priority >
-    // (*queue)->priority)
-    // {
-    // }
-    // Case 3: non-empty queue, new process needs to be inserted somewhere in
-    // it. look through the processes in the queue until we find a spot where
-    // the process' priority will be properly respected.
-    else
+    else if (p->priority < q->priority) // process in queue is higher
+    {
+        while (q->next && q->next->priority >= p->priority)
+            q = q->next;
+        // stops with q being the immediate predecessor for p
+
+        p->next = q->next;
+        q->next = p;
+    }
+    else // process p has the highest priority
     {
         p->next = (*queue);
         (*queue) = p;
     }
+
+    return 0;
 }
 
 // Remove a PROC (highest priority in the next homework)
@@ -216,9 +186,19 @@ PROC *dequeue(PROC **queue)
 // 6. print the queue entries in [pid, priority]->  format;
 void printQueue(PROC *queue)
 {
-    PROC *p;
-    // if we don't have a queue, say "There are no processes in this queue"
-    // if we do, print each item in the queue
+    printf("\nQueue: ");
+    if (!queue)
+    {
+        printf("There are no processes in this queue\n");
+        return;
+    }
+
+    while (queue)
+    {
+        printf("[%d, %d] -> ", queue->pid, queue->priority);
+        queue = queue->next;
+    }
+    printf("NULL\n");
 }
 
 // 7. Scheduler
@@ -234,7 +214,6 @@ int scheduler()
     }
     running = dequeue(&readyQueue);
     printf("Scheduler finished\n");
-    // Use the MODIFIED scheduler() function propose in class
 
     return 0;
 }
