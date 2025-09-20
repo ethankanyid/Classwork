@@ -19,5 +19,3 @@ echo done
 
 echo booting...
 qemu-system-i386 -fda mtximage -no-fd-bootchk
-
-#  Use YOUR MTX booter of LAB#1 to boot up MTX
