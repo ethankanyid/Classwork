@@ -87,6 +87,8 @@ int initialize()
 // 3. Create a process dynamically
 PROC *kfork()
 {
+    printf("Forking... ");
+
     int i;
     PROC *p = get_proc(&freeList);
     if (!p)
@@ -111,6 +113,7 @@ PROC *kfork()
     p->ksp = &p->kstack[SSIZE - 9];
     enqueue(&readyQueue, p);
 
+    printf("Fork Complete!\n");
     return p;
 }
 
@@ -199,12 +202,13 @@ void printQueue(PROC *queue)
 // 7. The process scheduler
 int scheduler()
 {
+    printf("Switching...\n");
     if (running->status == READY)
     {
         enqueue(&readyQueue, running);
     }
     running = dequeue(&readyQueue);
-    printf("Scheduler finished\n");
+    printf("Scheduler finished!\n");
 
     return 0;
 }
@@ -221,15 +225,11 @@ void help()
 // 10. Run the OS
 int main()
 {
-    printf("\nWelcome to the CS460 Multitasking System New User!\n");
+    printf("\nWelcome to the CS460 Multitasking System!\n");
+    help();
 
-    printf("initializing...");
     initialize();
-
-    printf("forking...");
     kfork();
-
-    printf("switching...");
     tswitch();
 
     printf("\nGoodbye User!\n");
