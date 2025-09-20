@@ -87,9 +87,10 @@ int initialize()
 // 3. Create a process dynamically
 PROC *kfork()
 {
+    int i;
+
     printf("Forking... ");
 
-    int i;
     PROC *p = get_proc(&freeList);
     if (!p)
     {
