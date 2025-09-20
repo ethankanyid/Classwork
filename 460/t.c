@@ -100,11 +100,13 @@ PROC *kfork()
 
     /* initialize new proc's kstack[ ] */
     for (i = 1; i < 10; i++)
-        p->kstack[SSIZE - i] = 0;     // all 0's
-    p->kstack[SSIZE - 1] = (int)body; // resume point=address of body(void)
-    p->ksp = &p->kstack[SSIZE - 9];   // proc saved sp
-    enqueue(&readyQueue, p);          // enter p into readyQueue by priority
-    return p;                         // return child PROC pointer
+        p->kstack[SSIZE - i] = 0; // all 0's
+    p->kstack[SSIZE - 1] = (int)
+        body; // resume point=address of body(void) //this is the magic that
+              // stores the address of (body) so that function takes control
+    p->ksp = &p->kstack[SSIZE - 9]; // proc saved sp
+    enqueue(&readyQueue, p);        // enter p into readyQueue by priority
+    return p;                       // return child PROC pointer
 }
 
 // 4. Get a FREE PROC
@@ -148,7 +150,7 @@ int enqueue(PROC **queue, PROC *p)
         *queue = p;
         (*queue)->next = NULL;
     }
-    else if (p->priority < q->priority) // process in queue is higher
+    else if (p->priority <= q->priority) // process in queue is higher
     {
         while (q->next && q->next->priority >= p->priority)
             q = q->next;
