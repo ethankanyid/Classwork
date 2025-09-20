@@ -88,10 +88,11 @@ int initialize()
 PROC *kfork()
 {
     int i;
+    PROC *p;
 
     printf("Forking... ");
 
-    PROC *p = get_proc(&freeList);
+    p = get_proc(&freeList);
     if (!p)
     {
         printf("No more PROC's, kfork() failed\n");
