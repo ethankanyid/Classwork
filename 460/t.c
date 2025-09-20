@@ -80,7 +80,7 @@ int initialize()
     freeList = &proc[1];
     readyQueue = 0;
 
-    printf("Initialization complete\n");
+    printf("Initialization complete!\n");
     return 0;
 }
 
