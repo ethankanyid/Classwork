@@ -59,7 +59,7 @@ int initialize()
     int i;
     PROC *p;
 
-    printf("Initializing...\n");
+    printf("Initializing... ");
 
     for (i = 0; i < NPROC; i++)
     {
@@ -204,7 +204,7 @@ void printQueue(PROC *queue)
 // 7. The process scheduler
 int scheduler()
 {
-    printf("Switching...\n");
+    printf("Switching... ");
     if (running->status == READY)
     {
         enqueue(&readyQueue, running);
@@ -222,6 +222,7 @@ void help()
     printf(" - s: Switch to the next ready process.\n");
     printf(" - f: Fork a new process.\n");
     printf(" - ?: This help message.\n");
+    printf("\n");
 }
 
 // 10. Run the OS
