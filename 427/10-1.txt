@@ -1,0 +1,13 @@
+Q1:
+it is space uncoupled but time coupled
+if it retains messages its time uncoupled
+
+Q2:
+open group
+professor said to skip second part
+
+Q3:
+filtering because it is only directed for some of the clients
+flooding
+I saw filtering because some groups received messages and others didnt based on their subsriptions
+flooding would be all groups receieving the same messages
