@@ -1,0 +1,67 @@
+Q1:
+1. one looks like a penguin, one is static
+2. the image on the right is discernable
+3. the left one use some sort of chaining
+4. the right one must be the same for certain blocks
+
+Q2:
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAgFgCsqPy3ujmrXtj+KNEADTrkLZN8quR9lCvS40DIEfhEwj/
+oIBJHdlkme9RrL24ueBqlspuqVF4q1pkNXGDRgKmX59HMfKAJVODPMMVXNzNLWAj
+V1An8ITGKehKQWOVdiBqn6AvCsSUOrUvAFFL8xGEs8RZICHTqat33vZyOADBrSMk
+yyDUGCez+lK45V1aSeKU9Lsx/YlRYJRf40rpvMnyogQLD9U750M8fbx8X5Gi+ul/
+9x0Jon8Sw7FH41TE6/ZToDxyGob9rGc8UsXJQcVPNw2ZjL9KUXGaBphZ2smFI8s0
+hOQ95ATNEzJZA9JmJPml0vNjw3bt7nDs2/fXSwIDAQABAoIBAB28RmO9OHgM3eUz
+wWXJ7edeW3Wbx1OCDL9U0khe02qXPL58Rz2Ye1g/Fd/UYsfy7Omj5Q4quJjiF2Mb
+/jujoRaHZqSg8o3P8YC0aKObT0fEoITy0T1ZhOdk28S53PppaCeGOy3gnwWPpgg0
+Ej+wljgqxuQfica4D6Iv6AXwc2Yl8kkquXu3/lISPSx+Qm+GcWYqSj7kWuE5OCe2
+rKS1c4R7FoWTvisq6kPCHky66XgluxMliooWT75yhL0cKHaSdFRoB9b8kyZB3Nej
+piKkPVgyJf4hE70rwbItIx6Z2U8GueKRRZ1sDJJwT7OQv5ehbNJU7UGhKq+A6A6R
+gP35oYECgYEAyOuO9jR+Jk6XAydB18PaLSF7cCG2DLr+64vJ+V4esvFC897WA8c6
+82RcMFBnJuRYAWhJB69+nUdCG6uaYcLnfLsY/tszTnlSSzwYYSDmreQmlUjbpnu9
+G6zudAJy5s81UmGWT1VEYv9ObXAMMaU1hosjzrIFXYDYwx/ztn4C1E8CgYEAo4cX
+gl/ZikeIV0lL+XJKPfCiwNvyGQba5a48KiweDEaPcSDh5MXjBrZ8unW+KkS/YGlX
+8a1NmZhvWy4xx94m9hGiUUeGIsXO8jYIN52Zgnkk042Ar+0jprg5alY0Jxf8tsh+
+IaI+TdXto0f2n4pL3v+BJLVStMg44XD95Oi0AkUCgYAnv1n/4PCX2XJMgGapLaiq
+xvXpf/HI4PFvXa8uMu11zv7Eye+ivbYu0krej/loG0JBvQS9jX1J1gABA1i+QFWV
+Olo+iNTEkIG0OoZEKMMZ4Ym0fL5fWBlYMUTXFGjwuks9KesXdLHbt9AnHER9Scam
+AD6sNFGVZtj6+QY4swMSRwKBgAIae7/ukbLIpsVQqQyFXtUbIkzOx3dw8iHgMt/r
+/1rzEWdIH/+8V+Y/NK2FVDPg/IE1+a6fJw9huZT3rCZBAklKAsd+3wfVeYr+DO8C
+NPZLrqCWAmDA8SN03TAz+anDEjobrBuspZaEuPDPvSliMwWkTbn2JyEyLiEgPfPS
+1nXtAoGADUCHwDHykVH4V3TFD3ZPVhLV5YfViOS4w8qw/42jam/03fYgcMHlvXg5
+ekYUVlzephqrEICzsJyxEPmmMRYgwcbiuXm29HeHAv99hbzo1PmDooVhP2jrR6SD
+lLQp7xGNTZdWeRCfU3WcqSjT9ypDttqKZLEYFZ3p3Gg35vpyq54=
+-----END RSA PRIVATE KEY-----
+
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgFgCsqPy3ujmrXtj+KNE
+ADTrkLZN8quR9lCvS40DIEfhEwj/oIBJHdlkme9RrL24ueBqlspuqVF4q1pkNXGD
+RgKmX59HMfKAJVODPMMVXNzNLWAjV1An8ITGKehKQWOVdiBqn6AvCsSUOrUvAFFL
+8xGEs8RZICHTqat33vZyOADBrSMkyyDUGCez+lK45V1aSeKU9Lsx/YlRYJRf40rp
+vMnyogQLD9U750M8fbx8X5Gi+ul/9x0Jon8Sw7FH41TE6/ZToDxyGob9rGc8UsXJ
+QcVPNw2ZjL9KUXGaBphZ2smFI8s0hOQ95ATNEzJZA9JmJPml0vNjw3bt7nDs2/fX
+SwIDAQAB
+-----END PUBLIC KEY-----
+
+the most common key sizes are 1024, 2048, and 4096
+2048 is the most used
+smaller ones are easier, but larger ones are safer
+Q3:
+8b1a9953c4611296a827abf8c47804d7	                                md5	    Hello
+f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0	                        sha1	Hello
+185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969	sha256	Hello
+
+
+1. Which of the three hashes did CrackStation find? 
+ALL
+2. Why was CrackStation able to find some hashes but not others? 
+They are easy to break
+3. What data does CrackStation use to reverse hashes? 
+tables
+4. How would adding a random salt to the input change the results?
+hashes arent supposed to produce the same thing
+5. Give two practical defenses to protect stored passwords from lookup attacks.
+hash them, salt them
+
+Q4:
+
