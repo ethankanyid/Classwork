@@ -1,0 +1,75 @@
+1. the ip is 192.168.1.100
+2. screenshot 2.png
+3.
+source addr = 192.168.1.100
+dest addr = 64.233.169.104
+dest port = 80
+source port = 4335
+4.
+time = 7.158797
+source port = 80
+dest port = 4335
+dest addr = 192.168.1.100
+source addr = 64.233.169.104
+5.
+SYN
+time = 7.075657000
+source addr = 192.168.1.100
+dest addr = 64.233.169.104
+dest port = 80
+source port = 4335
+
+SYN-ACK
+time = 7.108986000
+source port = 80
+dest port = 4335
+dest addr = 192.168.1.100
+source addr = 64.233.169.104
+
+6.
+time = 6.069168000
+source addr = 71.192.34.104
+dest addr = 64.233.169.104
+dest port = 80
+source port = 4335
+
+dest addr, source port, dest port are all the same
+the time and source addr are all different
+
+7.
+out of the version, header length, flags and checksum, only the checksum changed
+the checksum changed because its check of the info in that packet, and the info in that packet changed (i.e. the source addr)
+
+8.
+time = 6.117570000
+source port = 80
+dest port = 4335
+dest addr = 71.192.34.104
+source addr = 64.233.169.104
+
+source addr, source port, dest port are all the same
+the time and dest addr are all different
+
+9.
+time = 6.035475000
+source addr = 71.192.34.104
+dest addr = 64.233.169.104
+dest port = 80
+source port = 4335
+
+SYN-ACK
+time = 6.067775000
+source port = 80
+dest port = 4335
+dest addr = 71.192.34.104
+source addr = 64.233.169.104
+
+only the times and dest/source addr changed. this is the routers ip instead of the ip of the host NAT'd behind the router.
+
+10.
+| Internal IP Address | Internal Port | External IP Address | External Port |
+| ------------------- | ------------- | ------------------- | ------------- |
+| 192.168.1.100       | 4335          | 71.192.34.104       | 4335          |
+
+destination addr = 64.233.169.104
+destination port = 80
