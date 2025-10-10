@@ -1,10 +1,13 @@
 #include "structs.h"
-#include <stdio.h>
 
 PROC *kfork()
 {
     int i;
-    PROC *p = get_proc();
+    PROC *p;
+
+    printf("Forking... ");
+
+    p = get_proc(&freeList);
     if (!p)
     {
         printf("kfork failed: no free PROC\n");

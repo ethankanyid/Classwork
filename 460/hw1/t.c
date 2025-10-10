@@ -30,7 +30,6 @@ typedef struct proc
 PROC proc[NPROC], *running, *freeList, *readyQueue;
 int procSize = sizeof(PROC);
 int color = 0x0C;
-int printf(const char *fmt, ...);
 
 // External functions
 extern int tswitch(void);

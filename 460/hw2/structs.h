@@ -4,6 +4,9 @@
 #define NPROC 9
 #define SSIZE 1024 /* kstack int size */
 
+// Define null since it doesn't exist
+#define NULL 0
+
 // Process status codes
 #define FREE 0
 #define READY 1
@@ -31,16 +34,24 @@ extern PROC proc[NPROC], *running, *freeList, *readyQueue;
 extern int procSize;
 extern int color;
 
+/* external functions */
+extern int tswitch(void);
+extern int getc(void);
+int printf(const char *fmt, ...);
+
 /* Function prototypes */
+int body();
 int initialize();
+int scheduler();
+
 PROC *get_proc();
 void put_proc(PROC *p);
 void enqueue(PROC **queue, PROC *p);
 PROC *dequeue(PROC **queue);
 void printQueue(PROC *queue);
+
 PROC *kfork();
-int scheduler();
-int body();
+
 void help();
 
 /* Kernel functions */

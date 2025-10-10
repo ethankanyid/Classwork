@@ -1,5 +1,5 @@
 a.out
-#mtximage
-#mylib
-#mtxlib
+mtximage
+mylib
+mtxlib
 *.o

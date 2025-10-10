@@ -1,5 +1,4 @@
 #include "structs.h"
-#include <stdio.h>
 
 PROC proc[NPROC], *running, *freeList, *readyQueue;
 int procSize = sizeof(PROC);
@@ -38,6 +37,7 @@ void help()
     printf(" ? - Show this help menu\n");
 }
 
+// Process body code — runs when process is tswitched in
 int body()
 {
     char c;
@@ -48,8 +48,9 @@ int body()
         printf("ReadyQueue: ");
         printQueue(readyQueue);
         printf("Command [s|f|?|q]: ");
-        c = getchar();
-        getchar(); // consume newline
+
+        c = getc();
+        printf("\n");
 
         switch (c)
         {

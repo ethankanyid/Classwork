@@ -1,5 +1,4 @@
 #include "structs.h"
-#include <stdio.h>
 
 PROC *get_proc()
 {
