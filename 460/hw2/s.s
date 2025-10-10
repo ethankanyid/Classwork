@@ -1,7 +1,6 @@
 .globl _tswitch,_getc,_putc,_getebp                              ! EXPORT these
 .globl _main,_running,_scheduler,_proc,_procSize,_color  ! IMPORT these
-.globl auto_start
-auto_start:
+
 start:
         mov     ax,cs                   ! establish segments
         mov     ds,ax                   ! Let DS,SS,ES = CS=0x1000.
