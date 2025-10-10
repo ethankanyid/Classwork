@@ -11,15 +11,15 @@ void put_proc(PROC *p)
     enqueue(&freeList, p);
 }
 
-PROC *dequeue(PROC **queue)
-{
-    PROC *p = *queue;
-    if (!p)
-        return NULL;
-    *queue = p->next;
-    p->next = NULL;
-    return p;
-}
+// PROC *dequeue(PROC **queue)
+// {
+//     PROC *p = *queue;
+//     if (!p)
+//         return NULL;
+//     *queue = p->next;
+//     p->next = NULL;
+//     return p;
+// }
 
 // Priority-based enqueue
 void enqueue(PROC **queue, PROC *p)
