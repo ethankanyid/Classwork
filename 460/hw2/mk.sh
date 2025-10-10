@@ -9,7 +9,7 @@ echo compiling
    bcc -c -ansi t.c kernel.c func.c queue.c
 
 echo linking
-    ld86 -d s.o t.o queue.o func.o kernel.o mylib mtxlib /usr/lib/bcc/libc.a
+    ld86 -d s.o t.o queue.o func.o kernel.o mylib /usr/lib/bcc/libc.a
 
 echo cp a.out to mtximage/boot/mtx
    mount -o loop mtximage /mnt
