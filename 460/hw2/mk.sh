@@ -6,10 +6,10 @@ set -e
 
 echo compiling
    as86 -o  s.o  s.s
-   bcc  -c -ansi  t.c
+   bcc -c -ansi t.c kernel.c func.c queue.c
 
 echo linking
-   ld86 -d s.o t.o mylib /usr/lib/bcc/libc.a
+    ld86 -d s.o t.o queue.o func.o kernel.o mtxlib mylib /usr/lib/bcc/libc.a
 
 echo cp a.out to mtximage/boot/mtx
    mount -o loop mtximage /mnt
