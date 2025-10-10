@@ -67,6 +67,7 @@ int body()
             return 0;
         default:
             printf("Invalid command.\n");
+            break;
         }
     }
 }

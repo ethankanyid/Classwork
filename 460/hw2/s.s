@@ -1,20 +1,21 @@
-.globl _tswitch,_getc,_putc,_getebp                              ! EXPORT these 
+.globl _tswitch,_getc,_putc,_getebp                              ! EXPORT these
 .globl _main,_running,_scheduler,_proc,_procSize,_color  ! IMPORT these
-
+.globl auto_start
+auto_start:
 start:
-        mov     ax,cs                   ! establish segments 
+        mov     ax,cs                   ! establish segments
         mov     ds,ax                   ! Let DS,SS,ES = CS=0x1000.
-        mov     ss,ax                   
+        mov     ss,ax
         mov     es,ax
-	
+
 	mov     sp,#_proc               ! sp -> proc[0]
 	add     sp,_procSize            ! sp -> proc[0]'s HIGH END
-	
+
         call _main                      ! call main() in C
 
 dead:	jmp dead                        ! loop if main() ever returns
 
-	
+
 _tswitch:
 SAVE:	push ax
         push bx
@@ -28,7 +29,7 @@ SAVE:	push ax
 	mov   2[bx], sp
 
 FIND:	call _scheduler
-	
+
 RESUME:	mov   bx, _running
 	mov   sp, 2[bx]
 	popf
@@ -40,23 +41,22 @@ RESUME:	mov   bx, _running
 	pop  bx
 	pop  ax
 	ret
-	
-_getebp: 
+
+_getebp:
        mov ax, bp
        ret
 
 _getc:
-        xorb   ah,ah 
-        int    0x16  
-        ret 
+        xorb   ah,ah
+        int    0x16
+        ret
 
-_putc:           
+_putc:
         push   bp
         mov    bp,sp
         movb   al,4[bp]
-        movb   ah,#14  
+        movb   ah,#14
         mov    bx,_color   ! color is global set in C code by pid
-        int    0x10    
+        int    0x10
         pop    bp
         ret
-
