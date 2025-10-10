@@ -3,6 +3,7 @@
 
 PROC *kfork()
 {
+    int i;
     PROC *p = get_proc();
     if (!p)
     {
@@ -15,7 +16,7 @@ PROC *kfork()
     p->ppid = running->pid;
     p->parent = running;
 
-    for (int i = 1; i < 10; i++)
+    for (i = 1; i < 10; i++)
         p->kstack[SSIZE - i] = 0;
     p->kstack[SSIZE - 1] = (int)body;
     p->ksp = &(p->kstack[SSIZE - 9]);
