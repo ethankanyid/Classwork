@@ -1,0 +1,22 @@
+Q1:
+1. lost update because the old values were read without updates
+- could also be write write
+2. dirty read or Non-Serializable Schedule
+3. dirty read
+4. inconsistent Retrieval
+5. Phantom Read
+6. Write-Write Conflict
+7. Lock Conversion (Upgrade/Downgrade)
+8. Exclusive Lock (Write Lock)
+9. deadlock
+10. Wait-for Graph Cycle
+11. Validation Failure (OCC Abort)
+12. Timestamp Write Abort
+13. read abort
+14. Shared Lock (Read Lock)
+15. Cascading Abort
+16. Pessimistic vs Optimistic Concurrency
+17. Serially Equivalent Schedule
+18. Non-Serializable Schedule
+19. Strict Two-Phase Locking (Strict 2PL)
+20. Cascading Abort
