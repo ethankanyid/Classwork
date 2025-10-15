@@ -1,0 +1,169 @@
+Participants: P1, P2, P3
+Phase 1: canCommit?
+
+  - P1 vote: yes
+  - P2 vote: yes
+  - P3 vote: yes
+
+Votes: {'P1': 'yes', 'P2': 'yes', 'P3': 'yes'}
+
+Phase 2: Decision = COMMIT → broadcasting...
+  - P1 committed (haveCommitted sent)
+  - P2 committed (haveCommitted sent)
+  - P3 committed (haveCommitted sent)
+
+Transaction complete.
+
+------------------------------------------------
+
+Participants: P1, P2, P3
+Phase 1: canCommit?
+
+  - P1 vote (random): no
+  - P2 vote (random): no
+  - P3 vote (random): yes
+
+Votes: {'P1': 'no', 'P2': 'no', 'P3': 'yes'}
+
+Phase 2: Decision = ABORT → broadcasting...
+  - P1 already aborted (voted no)
+  - P2 already aborted (voted no)
+  - P3 aborted
+
+Transaction complete.
+
+------------------------------------------------
+
+Participants: P1, P2, P3
+Phase 1: canCommit?
+
+  - P1 vote (yes/no): yes
+  - P2 vote (yes/no): yes
+  - P3 vote (yes/no): yes
+
+Votes: {'P1': 'yes', 'P2': 'yes', 'P3': 'yes'}
+
+!!! Coordinator CRASHED before broadcasting decision !!!
+Participants that voted yes are now prepared/uncertain. Use 'Recover Coordinator' later.
+
+Hint: Now try (5) Recover coordinator or (6) Recover ALL participants.
+
+------------------------------------------------
+
+  - Recovering P1: prior status=prepared, vote=yes
+    getDecision→commit; P1 commits
+  - Recovering P2: prior status=prepared, vote=yes
+    getDecision→commit; P2 commits
+  - Recovering P3: prior status=prepared, vote=yes
+    getDecision→commit; P3 commits
+
+------------------------------------------------
+
+Saved state: tx=T57069, phase=decide, decision=commit
+Re-broadcasting decision=commit to participants...
+  - P1 ignored commit (status=committed)
+  - P2 ignored commit (status=committed)
+  - P3 ignored commit (status=committed)
+Recovery broadcast complete.
+
+------------------------------------------------
+
+--- COORDINATOR LOG ---
+{
+  "tx": "T57069",
+  "participants": [
+    "P1",
+    "P2",
+    "P3"
+  ],
+  "decision": "commit",
+  "phase": "done"
+}
+
+--- PARTICIPANT LOGS ---
+
+participant_P1.json:
+{
+  "pid": "P1",
+  "status": "committed",
+  "vote": "yes",
+  "tx": "T57069",
+  "coordinator_addr": "local"
+}
+
+participant_P2.json:
+{
+  "pid": "P2",
+  "status": "committed",
+  "vote": "yes",
+  "tx": "T57069",
+  "coordinator_addr": "local"
+}
+
+participant_P3.json:
+{
+  "pid": "P3",
+  "status": "committed",
+  "vote": "yes",
+  "tx": "T57069",
+  "coordinator_addr": "local"
+}
+
+------------------------------------------------
+
+SubCoordinator A collecting votes:
+  - A1 vote: no
+  - A2 vote: yes
+  - A3 vote: yes
+SubCoordinator A → NO
+
+SubCoordinator B collecting votes:
+  - B1 vote: yes
+  - B2 vote: no
+  - B3 vote: no
+SubCoordinator B → NO
+
+Top Coordinator collecting sub-votes:
+  - A says no ; B says no
+Top Coordinator DECISION: doAbort (some subtree said no)
+Abort cascades DOWN: any prepared children abort.
+
+Observation: Nested 2PC = same unanimity rule, but votes/decisions propagate up/down a tree.
+
+------------------------------------------------
+
+SubCoordinator A collecting votes:
+  - A1 vote: yes
+  - A2 vote: yes
+  - A3 vote: yes
+SubCoordinator A → YES
+
+SubCoordinator B collecting votes:
+  - B1 vote: yes
+  - B2 vote: yes
+  - B3 vote: yes
+SubCoordinator B → YES
+
+Top Coordinator collecting sub-votes:
+  - A says yes ; B says yes
+Top Coordinator DECISION: doCommit (ALL subtrees yes)
+Commit cascades DOWN: A children commit; B children commit.
+
+Observation: Nested 2PC = same unanimity rule, but votes/decisions propagate up/down a tree.
+
+------------------------------------------------
+
+Sending PROBE from U...
+  PROBE path: U → V
+  PROBE path: U → V → W
+
+No cycle involving the origin was found. No deadlock (for this origin).
+
+------------------------------------------------
+
+Sending PROBE from U...
+  PROBE path: U → V
+  PROBE path: U → V → W
+  PROBE path: U → V → W → U
+
+*** PROBE returned to origin! Deadlock detected: U → V → W → U ***
