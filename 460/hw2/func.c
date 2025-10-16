@@ -42,10 +42,10 @@ int body()
 {
     char c;
 
-    color = 0x01 + (running->pid % NPROC);
-
     while (1)
     {
+        color = 0x01 + (running->pid % NPROC);
+
         printf("\n==============================\n");
         printf("Running process: P%d\n", running->pid);
         printf("ReadyQueue: ");
