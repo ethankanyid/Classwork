@@ -1,0 +1,1 @@
+we learned how to use an sdn and remotely manage a network. configure a switch through the cli and use the web interface remotely configure these after they were all connected. We also we able to test the networks with pings
