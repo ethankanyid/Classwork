@@ -41,6 +41,9 @@ void help()
 int body()
 {
     char c;
+
+    color = 0x01 + (running->pid % NPROC);
+
     while (1)
     {
         printf("\n==============================\n");
