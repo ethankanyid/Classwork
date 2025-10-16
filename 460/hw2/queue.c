@@ -54,14 +54,19 @@ void enqueue(PROC **queue, PROC *p)
 
 void printQueue(PROC *queue)
 {
-    PROC *p = queue;
-    printf("[");
-    while (p)
+    printf("\nQueue: ");
+    if (!queue)
     {
-        printf("%d%s", p->pid, p->next ? " -> " : "");
-        p = p->next;
+        printf("There are no processes in this queue\n");
+        return;
     }
-    printf("]\n");
+
+    while (queue)
+    {
+        printf("[%d, %d] -> ", queue->pid, queue->priority);
+        queue = queue->next;
+    }
+    printf("NULL\n");
 }
 
 int scheduler()

@@ -50,7 +50,7 @@ int body()
         printf("Running process: P%d\n", running->pid);
         printf("ReadyQueue: ");
         printQueue(readyQueue);
-        printf("Command [s|f|?|q]: ");
+        printf("Command [s | f | ? | q]: ");
 
         c = getc();
         printf("\n");
