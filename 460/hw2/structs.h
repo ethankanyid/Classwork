@@ -14,6 +14,7 @@
 #define BLOCK 3
 #define ZOMBIE 4
 #define STOP 5
+#define DEAD 6
 
 // PROC structure definition
 typedef struct proc
@@ -55,8 +56,8 @@ void help();
 PROC *kfork();
 
 /* Kernel functions */
-void ksleep(int event);
-void kwakeup(int event);
+void ksleep(int event = 0);
+void kwakeup(int event = 0);
 void kexit();
 void kwait();
 void kstop();

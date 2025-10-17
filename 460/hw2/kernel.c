@@ -29,6 +29,14 @@ PROC *kfork()
 
 void ksleep(int event)
 {
+    int i;
+    int c;
+
+    printf("Select an integer event (0-9)");
+
+    c = getc() - '0';
+    printf("\n");
+
     running->event = event;
     running->status = SLEEP;
     tswitch();
@@ -38,10 +46,17 @@ void kwakeup(int event)
 {
     int i;
     PROC *p;
+    int c;
+
+    printf("Select an integer event (0-9)");
+
+    c = getc() - '0';
+    printf("\n");
+
     for (i = 0; i < NPROC; i++)
     {
         p = &proc[i];
-        if (p->status == SLEEP && p->event == event)
+        if (p->status == SLEEP && p->event == c)
         {
             p->status = READY;
             enqueue(&readyQueue, p);
@@ -59,7 +74,7 @@ void kcontinue()
 {
     int i;
     PROC *p;
-    char c;
+    int c;
 
     printf("Select a Process to continue(");
     for (i = 0; i < NPROC; i++)
