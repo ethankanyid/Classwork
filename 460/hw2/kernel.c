@@ -38,7 +38,7 @@ void ksleep()
 
     printf("Select an integer event (0-9): ");
 
-    c = getc(); // FIX
+    c = getc();
     printf("\n");
 
     pid = (int)c - 48;
@@ -63,7 +63,7 @@ void kwakeup()
 
     printf("Select an integer event (0-9): ");
 
-    c = getc(); // FIX
+    c = getc();
     printf("\n");
 
     pid = (int)c - 48;
@@ -109,7 +109,7 @@ void kcontinue()
     }
     printf("): ");
 
-    c = getc(); // FIX
+    c = getc();
     printf("\n");
 
     pid = (int)c - 48;
@@ -120,7 +120,7 @@ void kcontinue()
         return;
     }
 
-    p = &proc[c];
+    p = &proc[pid];
     if (p->status == STOP)
     {
         p->status = READY;
