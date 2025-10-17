@@ -40,9 +40,9 @@ void ksleep()
     c = getc(); // FIX
     printf("\n");
 
-    printf("%d, %c", c, c);
+    printf("%d, %c\n", c, c);
     c = c - '0';
-    printf("%d, %c", c, c);
+    printf("%d, %c\n", c, c);
 
     if (c < 0 || c > 9)
     {
@@ -66,9 +66,9 @@ void kwakeup()
     c = getc(); // FIX
     printf("\n");
 
-    printf("%d, %c", c, c);
+    printf("%d, %c\n", c, c);
     c = c - '0';
-    printf("%d, %c", c, c);
+    printf("%d, %c\n", c, c);
 
     if (c < 0 || c > 9)
     {
@@ -113,9 +113,9 @@ void kcontinue()
     c = getc(); // FIX
     printf("\n");
 
-    printf("%d, %c", c, c);
+    printf("%d, %c\n", c, c);
     c = c - '0';
-    printf("%d, %c", c, c);
+    printf("%d, %c\n", c, c);
 
     if (c < 0 || c > 9)
     {
