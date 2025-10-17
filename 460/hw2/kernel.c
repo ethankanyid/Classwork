@@ -33,16 +33,15 @@ PROC *kfork()
 void ksleep()
 {
     int i;
-    int c;
+    char c;
+    int pid;
 
     printf("Select an integer event (0-9): ");
 
     c = getc(); // FIX
     printf("\n");
 
-    printf("%d, %c\n", c, c);
-    c = (int)c - '0';
-    printf("%d, %c\n", c, c);
+    pid = (int)c - 48;
 
     if (c < 0 || c > 9)
     {
@@ -59,16 +58,15 @@ void kwakeup()
 {
     int i;
     PROC *p;
-    int c;
+    char c;
+    int pid;
 
     printf("Select an integer event (0-9): ");
 
     c = getc(); // FIX
     printf("\n");
 
-    printf("%d, %c\n", c, c);
-    c = (int)c - '0';
-    printf("%d, %c\n", c, c);
+    pid = (int)c - 48;
 
     if (c < 0 || c > 9)
     {
@@ -97,7 +95,8 @@ void kcontinue()
 {
     int i;
     PROC *p;
-    int c;
+    char c;
+    int pid;
 
     printf("Select a Process to continue(");
     for (i = 0; i < NPROC; i++)
@@ -113,9 +112,7 @@ void kcontinue()
     c = getc(); // FIX
     printf("\n");
 
-    printf("%d, %c\n", c, c);
-    c = (int)c - '0';
-    printf("%d, %c\n", c, c);
+    pid = (int)c - 48;
 
     if (c < 0 || c > 9)
     {
