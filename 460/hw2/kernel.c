@@ -44,7 +44,7 @@ PROC *kfork()
 //     c = getc() - '0';
 //     printf("\n");
 
-//     running->event = event;
+//     running->event = c;
 //     running->status = SLEEP;
 //     tswitch();
 // }
