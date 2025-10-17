@@ -28,27 +28,68 @@ PROC *kfork()
 }
 
 void ksleep(int event)
-{ /* TODO: implement sleep */
+{
+    running->event = event;
+    running->status = SLEEP;
+    tswitch();
 }
 
 void kwakeup(int event)
-{ /* TODO: implement wakeup */
-}
-
-void kexit()
-{ /* TODO: implement exit */
-}
-
-void kwait()
 {
-    printf("kwait not implemented yet\n");
+    int i;
+    PROC *p;
+    for (i = 0; i < NPROC; i++)
+    {
+        p = &proc[i];
+        if (p->status == SLEEP && p->event == event)
+        {
+            p->status = READY;
+            enqueue(&readyQueue, p);
+        }
+    }
 }
 
 void kstop()
-{ /* TODO: implement stop */
+{
+    running->status = STOP;
+    tswitch();
 }
 
 void kcontinue()
 {
-    printf("Continuing stopped processes (not implemented)\n");
+    int i;
+    PROC *p;
+    char c;
+
+    printf("Select a Process to continue(");
+    for (i = 0; i < NPROC; i++)
+    {
+        p = &proc[i];
+        if (p->status == STOP)
+        {
+            printf("%d, ", p->pid);
+        }
+    }
+    printf("): ");
+    c = getc() - '0';
+    printf("\n");
+
+    p = &proc[c];
+    if (p->status == STOP)
+    {
+        p->status = READY;
+        enqueue(&readyQueue, p);
+    }
+}
+
+void kexit()
+{
+    running->status = DEAD;
+    tswitch();
+}
+
+// not implemented
+void kwait()
+{
+    printf("kwait not implemented yet\n");
 }

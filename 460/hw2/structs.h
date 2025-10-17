@@ -50,9 +50,9 @@ void enqueue(PROC **queue, PROC *p);
 PROC *dequeue(PROC **queue);
 void printQueue(PROC *queue);
 
-PROC *kfork();
-
 void help();
+
+PROC *kfork();
 
 /* Kernel functions */
 void ksleep(int event);

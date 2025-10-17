@@ -72,14 +72,13 @@ int body()
             help();
             break;
         case 'q':
-            // do_exit();
-            return 0;
+            kexit();
             break;
         case 't':
-            do_stop();
+            kstop();
             break;
         case 'c':
-            do_continue();
+            kcontinue();
             break;
         case 'z':
             ksleep();
@@ -88,7 +87,7 @@ int body()
             kwakeup();
             break;
         case 'k':
-            kexit();
+            kstop();
             break;
         default:
             printf("Invalid command.\n");
