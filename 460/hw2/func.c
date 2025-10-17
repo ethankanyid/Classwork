@@ -34,7 +34,7 @@ void help()
     printf("\nAvailable Commands:\n");
     printf(" s - Switch to next ready process\n");
     printf(" f - Fork a child process\n");
-    printf(" q - Makes the running PROC die");
+    printf(" q - Makes the running PROC die\n");
     printf(" t - Stop the current running process\n");
     printf(" c - Continue a stopped process\n");
     printf(" z - Put running PROC to sleep on an event\n");
