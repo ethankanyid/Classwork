@@ -15,7 +15,7 @@ PROC *kfork()
     p->status = READY;
     p->priority = 1;
     p->ppid = running->pid;
-    // p->parent = running;
+    p->parent = running;
 
     for (i = 1; i < 10; i++)
         p->kstack[SSIZE - i] = 0;
