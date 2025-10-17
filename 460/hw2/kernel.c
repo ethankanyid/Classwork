@@ -37,10 +37,13 @@ void ksleep()
 
     printf("Select an integer event (0-9): ");
 
-    c = getc() - '0'; // FIX
+    c = getc(); // FIX
     printf("\n");
 
     printf("%d, %c", c, c);
+    c = c - '0';
+    printf("%d, %c", c, c);
+
     if (c < 0 || c > 9)
     {
         printf("Invalid Event.\n");
@@ -60,10 +63,13 @@ void kwakeup()
 
     printf("Select an integer event (0-9): ");
 
-    c = getc() - '0'; // FIX
+    c = getc(); // FIX
     printf("\n");
 
     printf("%d, %c", c, c);
+    c = c - '0';
+    printf("%d, %c", c, c);
+
     if (c < 0 || c > 9)
     {
         printf("Invalid Event.\n");
@@ -104,10 +110,13 @@ void kcontinue()
     }
     printf("): ");
 
-    c = getc() - '0';
+    c = getc(); // FIX
     printf("\n");
 
     printf("%d, %c", c, c);
+    c = c - '0';
+    printf("%d, %c", c, c);
+
     if (c < 0 || c > 9)
     {
         printf("Invalid PID.\n");
