@@ -57,8 +57,6 @@ int body()
         c = getc();
         printf("\n");
 
-        printf("%d, %c", c, c);
-
         switch (c)
         {
         case 's':
