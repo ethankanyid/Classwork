@@ -71,24 +71,24 @@ int body()
         case '?':
             help();
             break;
-        case 'q':
-            kexit();
-            break;
-        case 't':
-            kstop();
-            break;
-        case 'c':
-            kcontinue();
-            break;
-        case 'z':
-            ksleep(0);
-            break;
-        case 'a':
-            kwakeup(0);
-            break;
-        case 'k':
-            kstop();
-            break;
+        // case 'q':
+        //     kexit();
+        //     break;
+        // case 't':
+        //     kstop();
+        //     break;
+        // case 'c':
+        //     kcontinue();
+        //     break;
+        // case 'z':
+        //     ksleep(0);
+        //     break;
+        // case 'a':
+        //     kwakeup(0);
+        //     break;
+        // case 'k':
+        //     kstop();
+        //     break;
         default:
             printf("Invalid command.\n");
             break;
