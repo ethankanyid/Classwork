@@ -5,24 +5,31 @@ PROC *kfork()
     int i;
     PROC *p;
 
+    printf("Forking... ");
+
     p = get_proc(&freeList);
     if (!p)
     {
-        printf("kfork failed: no free PROC\n");
-        return NULL;
+        printf("No more PROC's, kfork() failed\n");
+        return 0;
     }
 
+    //  initialize the proc status, priority, ppid, parent...
     p->status = READY;
     p->priority = 1;
     p->ppid = running->pid;
-    p->parent = running;
 
+    /* initialize new proc's kstack[ ] */
     for (i = 1; i < 10; i++)
         p->kstack[SSIZE - i] = 0;
-    p->kstack[SSIZE - 1] = (int)body;
-    p->ksp = &(p->kstack[SSIZE - 9]);
 
+    // resume point = address of body(void)
+    // (the function that runs for this process)
+    p->kstack[SSIZE - 1] = (int)body;
+
+    p->ksp = &p->kstack[SSIZE - 9];
     enqueue(&readyQueue, p);
+
     printf("Process %d forked child %d\n", running->pid, p->pid);
     return p;
 }
