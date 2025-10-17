@@ -64,8 +64,8 @@ int body()
         switch (c)
         {
         case 's':
-            // tswitch();
-            scheduler();
+            tswitch();
+            // scheduler();
             break;
         case 'f':
             kfork();

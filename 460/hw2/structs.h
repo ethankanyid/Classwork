@@ -56,11 +56,11 @@ void help();
 PROC *kfork();
 
 /* Kernel functions */
-// void ksleep(int event);
-// void kwakeup(int event);
-// void kexit();
-// //void kwait();
-// void kstop();
-// void kcontinue();
+void ksleep(int event);
+void kwakeup(int event);
+void kexit();
+// void kwait();
+void kstop();
+void kcontinue();
 
 #endif
