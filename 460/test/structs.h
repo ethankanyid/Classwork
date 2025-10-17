@@ -21,7 +21,7 @@
 typedef struct proc
 {
     struct proc *next;
-    int event;
+    // int event;
     int *ksp;            // saved sp when PROC is not running
     int status;          // FREE|READY|SLEEP|BLOCK|ZOMBIE
     int priority;        // scheduling priority
