@@ -45,7 +45,7 @@ void ksleep()
     printf("%d, %c\n", c, c);
     printf("%d, %c\n", pid, pid);
 
-    if (c < 0 || c > 9)
+    if (pid < 0 || pid > 9)
     {
         printf("Invalid Event.\n");
         return;
@@ -72,7 +72,7 @@ void kwakeup()
     printf("%d, %c\n", c, c);
     printf("%d, %c\n", pid, pid);
 
-    if (c < 0 || c > 9)
+    if (pid < 0 || pid > 9)
     {
         printf("Invalid Event.\n");
         return;
@@ -120,7 +120,7 @@ void kcontinue()
     printf("%d, %c\n", c, c);
     printf("%d, %c\n", pid, pid);
 
-    if (c < 0 || c > 9)
+    if (pid < 0 || pid > 9)
     {
         printf("Invalid PID.\n");
         return;
