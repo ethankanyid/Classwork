@@ -21,12 +21,12 @@
 typedef struct proc
 {
     struct proc *next;
+    int *ksp;     // saved sp when PROC is not running
+    int status;   // FREE|READY|SLEEP|BLOCK|ZOMBIE
+    int priority; // scheduling priority
+    int pid;      // process ID
+    int ppid;     // parent process ID
     int event;
-    int *ksp;            // saved sp when PROC is not running
-    int status;          // FREE|READY|SLEEP|BLOCK|ZOMBIE
-    int priority;        // scheduling priority
-    int pid;             // process ID
-    int ppid;            // parent process ID
     struct proc *parent; // pointer to parent process
     int kstack[SSIZE];   // kmode stack of task. SSIZE = 1024.
 } PROC;
