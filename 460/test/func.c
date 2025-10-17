@@ -11,6 +11,7 @@ int initialize()
     for (i = 0; i < NPROC; i++)
     {
         p = &proc[i];
+        p->event = -1;
         p->pid = i; // pid = 0,1,2, NPROC - 1
         p->status = FREE;
         p->priority = 0;
