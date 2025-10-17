@@ -39,7 +39,7 @@ void ksleep(int event)
     int i;
     int c;
 
-    printf("Select an integer event (0-9)");
+    printf("Select an integer event (0-9): ");
 
     c = getc() - '0';
     printf("\n");
@@ -62,7 +62,7 @@ void kwakeup(int event)
     PROC *p;
     int c;
 
-    printf("Select an integer event (0-9)");
+    printf("Select an integer event (0-9): ");
 
     c = getc() - '0';
     printf("\n");
