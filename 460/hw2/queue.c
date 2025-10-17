@@ -8,7 +8,9 @@ PROC *get_proc()
 void put_proc(PROC *p)
 {
     p->status = FREE;
-    enqueue(&freeList, p);
+    p->next = freeList;
+    freeList = p;
+    // enqueue(&freeList, p);
     return;
 }
 

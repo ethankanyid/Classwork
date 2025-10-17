@@ -5,9 +5,7 @@ PROC *kfork()
     int i;
     PROC *p;
 
-    printf("Forking... ");
-
-    p = get_proc();
+    p = get_proc(); // FIX?
     if (!p)
     {
         printf("No more PROC's, kfork() failed\n");
@@ -18,6 +16,8 @@ PROC *kfork()
     p->status = READY;
     p->priority = 1;
     p->ppid = running->pid;
+    p->parent = running;
+    p->event = -1;
 
     /* initialize new proc's kstack[ ] */
     for (i = 1; i < 10; i++)
@@ -34,14 +34,14 @@ PROC *kfork()
     return p;
 }
 
-void ksleep(int event)
+void ksleep()
 {
     int i;
     int c;
 
     printf("Select an integer event (0-9): ");
 
-    c = getc() - '0';
+    c = getc() - '0'; // FIX
     printf("\n");
 
     printf("%d", c);
@@ -56,7 +56,7 @@ void ksleep(int event)
     tswitch();
 }
 
-void kwakeup(int event)
+void kwakeup()
 {
     int i;
     PROC *p;
@@ -64,7 +64,7 @@ void kwakeup(int event)
 
     printf("Select an integer event (0-9): ");
 
-    c = getc() - '0';
+    c = getc() - '0'; // FIX
     printf("\n");
 
     if (c < 0 || c > 9)

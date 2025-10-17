@@ -7,7 +7,6 @@ int main()
 
     initialize();
     kfork();
-    // body();
     tswitch();
 
     return 0;

@@ -31,9 +31,9 @@ typedef struct proc
 } PROC;
 
 /* Global variables */
-extern PROC proc[NPROC], *running, *freeList, *readyQueue;
-extern int procSize;
-extern int color;
+PROC proc[NPROC], *running, *freeList, *readyQueue;
+int procSize = sizeof(PROC);
+int color = 0x0C;
 
 /* external functions */
 extern int tswitch(void);
@@ -56,8 +56,8 @@ void help();
 PROC *kfork();
 
 /* Kernel functions */
-void ksleep(int event);
-void kwakeup(int event);
+void ksleep();
+void kwakeup();
 void kexit();
 // void kwait();
 void kstop();
