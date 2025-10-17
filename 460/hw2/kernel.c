@@ -34,81 +34,93 @@ PROC *kfork()
     return p;
 }
 
-// void ksleep(int event)
-// {
-//     int i;
-//     int c;
+void ksleep(int event)
+{
+    int i;
+    int c;
 
-//     printf("Select an integer event (0-9)");
+    printf("Select an integer event (0-9)");
 
-//     c = getc() - '0';
-//     printf("\n");
+    c = getc() - '0';
+    printf("\n");
 
-//     running->event = c;
-//     running->status = SLEEP;
-//     tswitch();
-// }
+    if (c < 0 || c > 9)
+    {
+        printf("Invalid PID.\n");
+        return;
+    }
 
-// void kwakeup(int event)
-// {
-//     int i;
-//     PROC *p;
-//     int c;
+    running->event = c;
+    running->status = SLEEP;
+    tswitch();
+}
 
-//     printf("Select an integer event (0-9)");
+void kwakeup(int event)
+{
+    int i;
+    PROC *p;
+    int c;
 
-//     c = getc() - '0';
-//     printf("\n");
+    printf("Select an integer event (0-9)");
 
-//     for (i = 0; i < NPROC; i++)
-//     {
-//         p = &proc[i];
-//         if (p->status == SLEEP && p->event == c)
-//         {
-//             p->status = READY;
-//             enqueue(&readyQueue, p);
-//         }
-//     }
-// }
+    c = getc() - '0';
+    printf("\n");
 
-// void kstop()
-// {
-//     running->status = STOP;
-//     tswitch();
-// }
+    if (c < 0 || c > 9)
+    {
+        printf("Invalid PID.\n");
+        return;
+    }
 
-// void kcontinue()
-// {
-//     int i;
-//     PROC *p;
-//     int c;
+    for (i = 0; i < NPROC; i++)
+    {
+        p = &proc[i];
+        if (p->status == SLEEP && p->event == c)
+        {
+            p->status = READY;
+            enqueue(&readyQueue, p);
+        }
+    }
+}
 
-//     printf("Select a Process to continue(");
-//     for (i = 0; i < NPROC; i++)
-//     {
-//         p = &proc[i];
-//         if (p->status == STOP)
-//         {
-//             printf("%d, ", p->pid);
-//         }
-//     }
-//     printf("): ");
-//     c = getc() - '0';
-//     printf("\n");
+void kstop()
+{
+    running->status = STOP;
+    tswitch();
+}
 
-//     p = &proc[c];
-//     if (p->status == STOP)
-//     {
-//         p->status = READY;
-//         enqueue(&readyQueue, p);
-//     }
-// }
+void kcontinue()
+{
+    int i;
+    PROC *p;
+    int c;
 
-// void kexit()
-// {
-//     running->status = DEAD;
-//     tswitch();
-// }
+    printf("Select a Process to continue(");
+    for (i = 0; i < NPROC; i++)
+    {
+        p = &proc[i];
+        if (p->status == STOP)
+        {
+            printf("%d, ", p->pid);
+        }
+    }
+    printf("): ");
+    c = getc() - '0';
+    printf("\n");
+
+    p = &proc[c];
+    if (p->status == STOP)
+    {
+        p->status = READY;
+        enqueue(&readyQueue, p);
+    }
+}
+
+void kexit()
+{
+    running->status = DEAD;
+    tswitch();
+}
 
 // not implemented
 // void kwait()

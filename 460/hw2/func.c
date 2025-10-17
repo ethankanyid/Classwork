@@ -16,7 +16,7 @@ int initialize()
         p->priority = 0;
         p->ppid = 0;
         p->parent = 0;
-        p->next = &proc[i + 1]; // point to next proc
+        p->next = (i < NPROC - 1) ? &proc[i + 1] : NULL;
     }
     // set up the 'root' process
     proc[NPROC - 1].next = NULL;
@@ -73,24 +73,24 @@ int body()
         case '?':
             help();
             break;
-        // case 'q':
-        //     kexit();
-        //     break;
-        // case 't':
-        //     kstop();
-        //     break;
-        // case 'c':
-        //     kcontinue();
-        //     break;
-        // case 'z':
-        //     ksleep(0);
-        //     break;
-        // case 'a':
-        //     kwakeup(0);
-        //     break;
-        // case 'k':
-        //     kstop();
-        //     break;
+        case 'q':
+            kexit();
+            break;
+        case 't':
+            kstop();
+            break;
+        case 'c':
+            kcontinue();
+            break;
+        case 'z':
+            ksleep(0);
+            break;
+        case 'a':
+            kwakeup(0);
+            break;
+        case 'k':
+            kstop();
+            break;
         default:
             printf("Invalid command.\n");
             break;
