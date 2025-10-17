@@ -38,7 +38,6 @@ void help()
     printf(" c - Continue a stopped process\n");
     printf(" z - Put running PROC to sleep on an event\n");
     printf(" a - Wake up all PROCs sleeping on an event\n");
-    printf(" k - Process termination\n");
     printf(" ? - Show this help menu\n");
 }
 
@@ -84,9 +83,6 @@ int body()
             break;
         case 'a':
             kwakeup();
-            break;
-        case 'k':
-            kstop();
             break;
         default:
             printf("Invalid command.\n");

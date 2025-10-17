@@ -40,7 +40,7 @@ void ksleep()
     c = getc() - '0'; // FIX
     printf("\n");
 
-    printf("%d", c);
+    printf("%d, %c", c, c);
     if (c < 0 || c > 9)
     {
         printf("Invalid PID.\n");
@@ -63,6 +63,7 @@ void kwakeup()
     c = getc() - '0'; // FIX
     printf("\n");
 
+    printf("%d, %c", c, c);
     if (c < 0 || c > 9)
     {
         printf("Invalid Event.\n");
@@ -102,8 +103,16 @@ void kcontinue()
         }
     }
     printf("): ");
+
     c = getc() - '0';
     printf("\n");
+
+    printf("%d, %c", c, c);
+    if (c < 0 || c > 9)
+    {
+        printf("Invalid PID.\n");
+        return;
+    }
 
     p = &proc[c];
     if (p->status == STOP)
