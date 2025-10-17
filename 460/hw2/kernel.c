@@ -42,8 +42,6 @@ void ksleep()
     printf("\n");
 
     pid = (int)c - 48;
-    printf("%d, %c\n", c, c);
-    printf("%d, %c\n", pid, pid);
 
     if (pid < 0 || pid > 9)
     {
@@ -69,8 +67,6 @@ void kwakeup()
     printf("\n");
 
     pid = (int)c - 48;
-    printf("%d, %c\n", c, c);
-    printf("%d, %c\n", pid, pid);
 
     if (pid < 0 || pid > 9)
     {
@@ -117,8 +113,6 @@ void kcontinue()
     printf("\n");
 
     pid = (int)c - 48;
-    printf("%d, %c\n", c, c);
-    printf("%d, %c\n", pid, pid);
 
     if (pid < 0 || pid > 9)
     {
