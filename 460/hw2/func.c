@@ -81,10 +81,10 @@ int body()
             kcontinue();
             break;
         case 'z':
-            ksleep();
+            ksleep(0);
             break;
         case 'a':
-            kwakeup();
+            kwakeup(0);
             break;
         case 'k':
             kstop();
