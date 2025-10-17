@@ -52,7 +52,7 @@ int body()
         printf("\n==============================\n");
         printf("Running process: P%d\n", running->pid);
         printQueue(readyQueue);
-        printf("Command [s | f | ? | q | t | c | z | a | k]: ");
+        printf("Command [s | f | ? | q | t | c | z | a]: ");
 
         c = getc();
         printf("\n");
