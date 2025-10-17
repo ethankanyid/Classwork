@@ -43,7 +43,7 @@ void ksleep()
     printf("%d, %c", c, c);
     if (c < 0 || c > 9)
     {
-        printf("Invalid PID.\n");
+        printf("Invalid Event.\n");
         return;
     }
 
