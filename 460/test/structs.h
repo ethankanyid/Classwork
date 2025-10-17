@@ -11,15 +11,17 @@
 #define SLEEP 2
 #define BLOCK 3
 #define ZOMBIE 4
+#define STOP 5
+#define DEAD 6
 
 // Define null since it doesn't exist
 #define NULL 0
-#define null 0
 
-// 1. PROC structure definition
+// PROC structure definition
 typedef struct proc
 {
     struct proc *next;
+    int event;
     int *ksp;            // saved sp when PROC is not running
     int status;          // FREE|READY|SLEEP|BLOCK|ZOMBIE
     int priority;        // scheduling priority
@@ -46,13 +48,19 @@ int scheduler();
 
 PROC *get_proc(PROC **list);
 int put_proc(PROC **list, PROC *p);
-
 int enqueue(PROC **queue, PROC *p);
 PROC *dequeue(PROC **queue);
-
-PROC *kfork();
-
 void printQueue(PROC *queue);
+
 void help();
+
+/* Kernel functions */
+PROC *kfork();
+// void ksleep();
+// void kwakeup();
+// void kexit();
+// // void kwait();
+// void kstop();
+// void kcontinue();
 
 #endif
