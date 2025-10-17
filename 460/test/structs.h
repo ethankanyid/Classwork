@@ -30,9 +30,9 @@ typedef struct proc
 } PROC;
 
 // Global variables
-PROC proc[NPROC], *running, *freeList, *readyQueue;
-int procSize = sizeof(PROC);
-int color = 0x0C;
+extern PROC proc[NPROC], *running, *freeList, *readyQueue;
+extern int procSize;
+extern int color;
 
 // External functions
 extern int tswitch(void);

@@ -1,5 +1,9 @@
 #include "structs.h"
 
+PROC proc[NPROC], *running, *freeList, *readyQueue;
+int procSize = sizeof(PROC);
+int color = 0x0C;
+
 // 3. Create a process dynamically
 PROC *kfork()
 {
