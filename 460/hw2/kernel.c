@@ -27,84 +27,84 @@ PROC *kfork()
     return p;
 }
 
-void ksleep(int event)
-{
-    int i;
-    int c;
+// void ksleep(int event)
+// {
+//     int i;
+//     int c;
 
-    printf("Select an integer event (0-9)");
+//     printf("Select an integer event (0-9)");
 
-    c = getc() - '0';
-    printf("\n");
+//     c = getc() - '0';
+//     printf("\n");
 
-    running->event = event;
-    running->status = SLEEP;
-    tswitch();
-}
+//     running->event = event;
+//     running->status = SLEEP;
+//     tswitch();
+// }
 
-void kwakeup(int event)
-{
-    int i;
-    PROC *p;
-    int c;
+// void kwakeup(int event)
+// {
+//     int i;
+//     PROC *p;
+//     int c;
 
-    printf("Select an integer event (0-9)");
+//     printf("Select an integer event (0-9)");
 
-    c = getc() - '0';
-    printf("\n");
+//     c = getc() - '0';
+//     printf("\n");
 
-    for (i = 0; i < NPROC; i++)
-    {
-        p = &proc[i];
-        if (p->status == SLEEP && p->event == c)
-        {
-            p->status = READY;
-            enqueue(&readyQueue, p);
-        }
-    }
-}
+//     for (i = 0; i < NPROC; i++)
+//     {
+//         p = &proc[i];
+//         if (p->status == SLEEP && p->event == c)
+//         {
+//             p->status = READY;
+//             enqueue(&readyQueue, p);
+//         }
+//     }
+// }
 
-void kstop()
-{
-    running->status = STOP;
-    tswitch();
-}
+// void kstop()
+// {
+//     running->status = STOP;
+//     tswitch();
+// }
 
-void kcontinue()
-{
-    int i;
-    PROC *p;
-    int c;
+// void kcontinue()
+// {
+//     int i;
+//     PROC *p;
+//     int c;
 
-    printf("Select a Process to continue(");
-    for (i = 0; i < NPROC; i++)
-    {
-        p = &proc[i];
-        if (p->status == STOP)
-        {
-            printf("%d, ", p->pid);
-        }
-    }
-    printf("): ");
-    c = getc() - '0';
-    printf("\n");
+//     printf("Select a Process to continue(");
+//     for (i = 0; i < NPROC; i++)
+//     {
+//         p = &proc[i];
+//         if (p->status == STOP)
+//         {
+//             printf("%d, ", p->pid);
+//         }
+//     }
+//     printf("): ");
+//     c = getc() - '0';
+//     printf("\n");
 
-    p = &proc[c];
-    if (p->status == STOP)
-    {
-        p->status = READY;
-        enqueue(&readyQueue, p);
-    }
-}
+//     p = &proc[c];
+//     if (p->status == STOP)
+//     {
+//         p->status = READY;
+//         enqueue(&readyQueue, p);
+//     }
+// }
 
-void kexit()
-{
-    running->status = DEAD;
-    tswitch();
-}
+// void kexit()
+// {
+//     running->status = DEAD;
+//     tswitch();
+// }
 
 // not implemented
-void kwait()
-{
-    printf("kwait not implemented yet\n");
-}
+// void kwait()
+// {
+//     printf("kwait not implemented yet\n");
+// }
