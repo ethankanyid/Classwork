@@ -9,6 +9,7 @@ void put_proc(PROC *p)
 {
     p->status = FREE;
     enqueue(&freeList, p);
+    return;
 }
 
 PROC *dequeue(PROC **queue)
@@ -24,32 +25,30 @@ PROC *dequeue(PROC **queue)
 // Priority-based enqueue
 void enqueue(PROC **queue, PROC *p)
 {
-    PROC *q, *prev = 0;
+    PROC *q = *queue;
 
-    if (*queue == 0)
+    // Case 1: empty queue
+    if (!q)
     {
         *queue = p;
-        p->next = 0;
-        return;
+        (*queue)->next = NULL;
     }
-
-    q = *queue;
-
-    if (p->priority > q->priority)
+    // Case 2: process in queue is higher
+    else if (p->priority <= q->priority) //
     {
-        p->next = q;
-        *queue = p;
-        return;
-    }
+        while (q->next && q->next->priority >= p->priority)
+            q = q->next;
+        // stops with q being the immediate predecessor for p
 
-    while (q && p->priority <= q->priority)
+        p->next = q->next;
+        q->next = p;
+    }
+    // Case 3: process p has the highest priority
+    else
     {
-        prev = q;
-        q = q->next;
+        p->next = (*queue);
+        (*queue) = p;
     }
-
-    prev->next = p;
-    p->next = q;
 }
 
 void printQueue(PROC *queue)

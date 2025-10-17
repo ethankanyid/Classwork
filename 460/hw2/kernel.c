@@ -5,8 +5,6 @@ PROC *kfork()
     int i;
     PROC *p;
 
-    printf("Forking... ");
-
     p = get_proc(&freeList);
     if (!p)
     {

@@ -33,7 +33,12 @@ void help()
     printf("\nAvailable Commands:\n");
     printf(" s - Switch to next ready process\n");
     printf(" f - Fork a child process\n");
-    // add more commands
+    printf(" q - Makes the running PROC die");
+    printf(" t - Stop the current running process\n");
+    printf(" c - Continue a stopped process\n");
+    printf(" z - Put running PROC to sleep on an event\n");
+    printf(" a - Wake up all PROCs sleeping on an event\n");
+    printf(" k - Process termination\n");
     printf(" ? - Show this help menu\n");
 }
 
@@ -58,7 +63,7 @@ int body()
         switch (c)
         {
         case 's':
-            scheduler();
+            tswitch();
             break;
         case 'f':
             kfork();
@@ -66,9 +71,25 @@ int body()
         case '?':
             help();
             break;
-            // add more commands
         case 'q':
+            // do_exit();
             return 0;
+            break;
+        case 't':
+            do_stop();
+            break;
+        case 'c':
+            do_continue();
+            break;
+        case 'z':
+            ksleep();
+            break;
+        case 'a':
+            kwakeup();
+            break;
+        case 'k':
+            kexit();
+            break;
         default:
             printf("Invalid command.\n");
             break;
