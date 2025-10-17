@@ -7,7 +7,7 @@ PROC *kfork()
 
     printf("Forking... ");
 
-    p = get_proc(&freeList);
+    p = get_proc();
     if (!p)
     {
         printf("No more PROC's, kfork() failed\n");

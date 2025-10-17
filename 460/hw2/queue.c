@@ -15,10 +15,8 @@ void put_proc(PROC *p)
 PROC *dequeue(PROC **queue)
 {
     PROC *p = *queue;
-    if (!p)
-        return NULL;
-    *queue = p->next;
-    p->next = NULL;
+    if (*queue != NULL)
+        *queue = (*queue)->next;
     return p;
 }
 
