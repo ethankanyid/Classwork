@@ -2,12 +2,12 @@
 
 int main()
 {
-    printf("Initializing MTX pre-lab system...\n");
+    printf("\nWelcome to the CS460 Multitasking System!\n");
     help();
 
     initialize();
     kfork();
     tswitch();
 
-    return 0;
+    printf("\nGoodbye User!\n");
 }

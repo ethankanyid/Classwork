@@ -1,11 +1,13 @@
 #include "structs.h"
 
+PROC proc[NPROC], *running, *freeList, *readyQueue;
+int procSize = sizeof(PROC);
+int color = 0x0C;
+
 PROC *kfork()
 {
     int i;
-    PROC *p;
-
-    p = get_proc(); // FIX?
+    PROC *p = get_proc();
     if (!p)
     {
         printf("No more PROC's, kfork() failed\n");
@@ -17,20 +19,14 @@ PROC *kfork()
     p->priority = 1;
     p->ppid = running->pid;
     p->parent = running;
-    p->event = -1;
 
-    /* initialize new proc's kstack[ ] */
     for (i = 1; i < 10; i++)
         p->kstack[SSIZE - i] = 0;
-
-    // resume point = address of body(void)
-    // (the function that runs for this process)
     p->kstack[SSIZE - 1] = (int)body;
+    p->ksp = &(p->kstack[SSIZE - 9]);
 
-    p->ksp = &p->kstack[SSIZE - 9];
     enqueue(&readyQueue, p);
-
-    // printf("Process %d forked child %d\n", running->pid, p->pid);
+    printf("Process %d forked child %d\n", running->pid, p->pid);
     return p;
 }
 
@@ -69,7 +65,7 @@ void kwakeup()
 
     if (c < 0 || c > 9)
     {
-        printf("Invalid PID.\n");
+        printf("Invalid Event.\n");
         return;
     }
 
@@ -122,9 +118,3 @@ void kexit()
     running->status = DEAD;
     tswitch();
 }
-
-// not implemented
-// void kwait()
-// {
-//     printf("kwait not implemented yet\n");
-// }

@@ -4,16 +4,19 @@ int initialize()
 {
     int i;
     PROC *p;
+
     for (i = 0; i < NPROC; i++)
     {
         p = &proc[i];
-        p->pid = i;
+        p->event = -1;
+        p->pid = i; // pid = 0,1,2, NPROC - 1
         p->status = FREE;
         p->priority = 0;
         p->ppid = 0;
         p->parent = 0;
         p->next = (i < NPROC - 1) ? &proc[i + 1] : NULL;
     }
+
     // set up the 'root' process
     proc[NPROC - 1].next = NULL;
     running = &proc[0];
@@ -43,7 +46,6 @@ void help()
 int body()
 {
     char c;
-
     while (1)
     {
         color = 0x0C + (running->pid % NPROC);
@@ -78,10 +80,10 @@ int body()
             kcontinue();
             break;
         case 'z':
-            ksleep(0);
+            ksleep();
             break;
         case 'a':
-            kwakeup(0);
+            kwakeup();
             break;
         case 'k':
             kstop();

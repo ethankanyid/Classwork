@@ -1,11 +1,9 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
+/************ t.c file ************/
 #define NPROC 9
 #define SSIZE 1024 /* kstack int size */
-
-// Define null since it doesn't exist
-#define NULL 0
 
 // Process status codes
 #define FREE 0
@@ -16,31 +14,34 @@
 #define STOP 5
 #define DEAD 6
 
+// Define null since it doesn't exist
+#define NULL 0
+
 // PROC structure definition
 typedef struct proc
 {
     struct proc *next;
+    int *ksp;     // saved sp when PROC is not running
+    int status;   // FREE|READY|SLEEP|BLOCK|ZOMBIE
+    int priority; // scheduling priority
+    int pid;      // process ID
+    int ppid;     // parent process ID
     int event;
-    int *ksp;            // saved sp when PROC is not running
-    int status;          // FREE|READY|SLEEP|BLOCK|ZOMBIE
-    int priority;        // scheduling priority
-    int pid;             // process ID
-    int ppid;            // parent process ID
     struct proc *parent; // pointer to parent process
     int kstack[SSIZE];   // kmode stack of task. SSIZE = 1024.
 } PROC;
 
-/* Global variables */
-PROC proc[NPROC], *running, *freeList, *readyQueue;
-int procSize = sizeof(PROC);
-int color = 0x0C;
+// Global variables
+extern PROC proc[NPROC], *running, *freeList, *readyQueue;
+extern int procSize;
+extern int color;
 
-/* external functions */
+// External functions
 extern int tswitch(void);
 extern int getc(void);
 int printf(const char *fmt, ...);
 
-/* Function prototypes */
+// Function prototypes
 int body();
 int initialize();
 int scheduler();
@@ -53,13 +54,11 @@ void printQueue(PROC *queue);
 
 void help();
 
-PROC *kfork();
-
 /* Kernel functions */
+PROC *kfork();
 void ksleep();
 void kwakeup();
 void kexit();
-// void kwait();
 void kstop();
 void kcontinue();
 
