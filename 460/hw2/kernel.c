@@ -30,7 +30,7 @@ PROC *kfork()
     p->ksp = &p->kstack[SSIZE - 9];
     enqueue(&readyQueue, p);
 
-    printf("Process %d forked child %d\n", running->pid, p->pid);
+    // printf("Process %d forked child %d\n", running->pid, p->pid);
     return p;
 }
 

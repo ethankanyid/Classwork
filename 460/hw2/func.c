@@ -50,7 +50,7 @@ int body()
 
     while (1)
     {
-        color = 0x01 + (running->pid % NPROC);
+        color = 0x0C + (running->pid % NPROC);
 
         printf("\n==============================\n");
         printf("Running process: P%d\n", running->pid);
