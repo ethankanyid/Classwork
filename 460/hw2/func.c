@@ -16,15 +16,16 @@ int initialize()
         p->priority = 0;
         p->ppid = 0;
         p->parent = 0;
-        p->next = (i < NPROC - 1) ? &proc[i + 1] : 0;
+        p->next = &proc[i + 1]; // point to next proc
     }
-    freeList = &proc[0];
+    // set up the 'root' process
+    proc[NPROC - 1].next = NULL;
+    running = &proc[0];
+    running->status = READY;
+    running->parent = &proc[0];
+    freeList = &proc[1];
     readyQueue = 0;
 
-    p = get_proc();
-    p->status = READY;
-    p->priority = 1;
-    running = p;
     return 0;
 }
 
