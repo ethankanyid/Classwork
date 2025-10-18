@@ -1,0 +1,5 @@
+race.c does not have thread safety because both threads are reading and writing at the same time.
+
+peterson.c implements the peterson algorithm to use flags and and a turn counter. this is thread safe and fair because each thread takes an equal turn.
+
+semaphore.c is thread safe because it uses a shared object (a mutex) which doesnt allow multiple threads to use it at the same time. This is essenitally a binary semaphore because it may only be used by one thread at a time. a semaphore would allow up to n uses at once.
