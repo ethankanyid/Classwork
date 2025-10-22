@@ -1,0 +1,38 @@
+AWS suffered a major outage originating in the US‑EAST‑1 region, triggered by a DNS resolution failure for its DynamoDB endpoint. Millions of users and thousands of companies globally were affected across social media, gaming, streaming and finance - particularly canvas. Services were restored by evening, though residual issues linger.
+
+Hub
+PC1-PC5
+0001.434B.0A23
+0060.5C94.D291
+00D0.5827.B188
+000C.8502.0D9A
+0001.969A.59DA
+
+PC1: 0001.969A.59DA
+PC3: 0001.434b.0a23
+
+the first request went out to say who is 192.168.10.13 (what is their MAC address)?
+the hub forwarded the request to everyone, but only 192.168.10.13
+everyone receieved reply, but only 192.168.10.11 cared
+then 192.168.10.11 pinged 192.168.10.13 (still went to everyone, but only 192.168.10.13 listens and replies)
+
+the packets arrived at the hub but collided and resulted in packet loss at the hosts. there was a delay and then they retransmitted without collision.
+
+
+Switch
+PC1-PC5
+0003.E45C.1563
+0007.ECC8.D29C
+0040.0BDD.D623
+0090.0CB9.B9BA
+00E0.F975.31C0
+
+MAC: 0003.e45c.1563 Port: Fa0/2
+MAC: 0040.0bdd.d623 Port: Fa0/3
+
+0040.0bdd.d623
+0003.e45c.1563
+
+on the switch the packets originally was forwarded to everyone until the mac address was found. once the two nodes were identified, communication only occured through those two nodes.
+
+this helps reduce broadcast and collision.
