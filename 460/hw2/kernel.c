@@ -32,7 +32,6 @@ PROC *kfork()
 
 void ksleep()
 {
-    int i;
     char c;
     int pid;
 
