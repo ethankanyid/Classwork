@@ -1,0 +1,3 @@
+Q1: All packets were received, they were in the same VLAN
+Q2: None of the packets were received, they were in different VLANs
+Q3: It was successful, the ping path was PC1 -> switch -> router -> switch -> PC3 -> switch -> router -> switch and this is because they are logically separated by the VLAN so they have to travel through the router to reach each other

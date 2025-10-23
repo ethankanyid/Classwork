@@ -1,0 +1,3 @@
+I dont have cisco packet tracer, so today I researched IoT devices and IoT gateway hubs. I learned that an IoT gateway hub is different than a router gatewat. a router gateway is what connects a local network to the internet. a IoT gateway hub is what connects multiple IoT devices. it can be local only or connected to the internent. it allows different devices to connect and have rules for how they interact.
+
+I also looked up a modern IoT system called Eufy. Eufy uses a proprietary gateway homebase that cameras and security devices connect to. this hub uses a web socket to externally access the security system. it does not use UPnP which is considered insecure.
