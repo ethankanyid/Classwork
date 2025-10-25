@@ -1,0 +1,27 @@
+This is just a file, so there is nothing to monitor on wireshark. Functions as it should
+
+
+---------------
+
+Hi, I don’t know how to code, but I need a very simple webpage where people can sign in. The page should have a box to enter a username and another box to enter a password, and a button to submit. Please make the webpage easy and plain, nothing fancy, and include all the code I need to create this page. Also, explain briefly what each part does in simple words. Thank you!
+
+----------------
+
+Sure! Here’s a very simple webpage with a username box, a password box, and a submit button. The page is plain and easy to understand.
+---
+
+code:
+
+---
+### How to use this code:
+1. Copy the entire code above.
+2. Open a simple text editor (like Notepad on Windows or TextEdit on Mac).
+3. Paste the code inside.
+4. Save the file as `signin.html` (make sure the extension is `.html`).
+5. Double-click the file to open it in your browser.
+
+---
+
+**Note:** This page only collects the username and password, but doesn’t actually check if the user is correct or save the data anywhere. To do that, you'd need some programming on a server or more advanced code.
+
+Would you like me to help you with that too?

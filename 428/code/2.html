@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Simple Sign In</title>
+    </head>
+    <body>
+        <h2>Sign In</h2>
+
+        <form id="loginForm">
+            <label for="username">Username:</label><br />
+            <input
+                type="text"
+                id="username"
+                name="username"
+                required
+            /><br /><br />
+
+            <label for="password">Password:</label><br />
+            <input
+                type="password"
+                id="password"
+                name="password"
+                required
+            /><br /><br />
+
+            <button type="submit">Sign In</button>
+        </form>
+
+        <p id="message" style="color: red"></p>
+
+        <script>
+            // This code runs when the form is submitted
+            document
+                .getElementById("loginForm")
+                .addEventListener("submit", function (event) {
+                    event.preventDefault(); // stop the form from refreshing the page
+
+                    const username = document.getElementById("username").value;
+                    const password = document.getElementById("password").value;
+
+                    // Example: username is "user" and password is "pass"
+                    if (username === "user" && password === "pass") {
+                        // Show welcome message and hide the form
+                        document.body.innerHTML = `<h2>Welcome, ${username}!</h2><p>You have successfully signed in.</p>`;
+                    } else {
+                        // Show error message
+                        document.getElementById("message").textContent =
+                            "Incorrect username or password. Try again.";
+                    }
+                });
+        </script>
+    </body>
+</html>
