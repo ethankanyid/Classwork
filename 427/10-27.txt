@@ -1,0 +1,30 @@
+
+Q2:
+SIP: SIP sets up, manages, and ends multimedia communication sessions like voice or video calls over IP networks.
+RTP: RTP carries real-time audio and video data across IP networks once a session is established.
+MP4/ALC/LCT: These protocols support adaptive and scalable media delivery, allowing efficient transmission of layered audio and video streams.
+BitTorrent: BitTorrent enables peer-to-peer file sharing by letting users download and upload pieces of files directly between computers.
+1.
+trying, invite, ack bye
+
+there is an invite and a good bye
+
+Q3:
+1.
+MP4 streaming uses small segments of video sent over the network instead of one continuous stream.
+
+udp
+
+In Wireshark captures, you can see MP4 “boxes” like ftyp, styp, and sidx inside the packet data.
+ftyp shows file type information for initialization.
+styp marks the start and type of a segment.
+sidx includes index and timing details.
+2.
+These packets mostly contain setup and timing information, not the actual video content.
+
+Unlike a continuous RTP stream, fragmented MP4 is sent in small pieces that can be managed separately.
+3.
+Sending short fragments makes it easier to adjust video quality for different network speeds and to broadcast the same content to many users at once.
+
+Q4:
+bittorrent is p2p and typically uses tcp but occasionaly uses udp as well
