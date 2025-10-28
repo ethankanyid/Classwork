@@ -1,0 +1,9 @@
+we talked about the professors favorite fruits and which ones she knows about. she likes peaches the most
+
+This is what my team was able to answer:
+1. 30 Monroe St and linksys12
+2. 0.102400
+3. 00:16:b6:f7:1d:51
+4. ff:ff:ff:ff:ff:ff
+5. 00:16:b6:f7:1d:51
+9. It broadcasts but I expected a deauthentication frame
