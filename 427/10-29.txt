@@ -1,0 +1,52 @@
+1. Problem Bitcoin Was Designed to Solve (and Scale)
+
+Bitcoin was designed to solve the trust problem in digital money — how to create a decentralized currency that doesn’t rely on a central authority (like a bank) to verify transactions or prevent double-spending.
+It was meant to scale to a global peer-to-peer payment network where anyone can send value to anyone else securely. The system needed to handle thousands of nodes and millions of users, maintaining security as it grew.
+
+2. Core Architectural Components and Interactions
+
+Nodes (full nodes and miners): Each node stores the blockchain and validates transactions. Miners compete to add new blocks.
+Blockchain (ledger): Immutable chain of blocks containing transaction history. Nodes agree on the longest valid chain through proof-of-work.
+Proof-of-Work: The consensus mechanism where miners solve computational puzzles to add blocks, securing the system and preventing Sybil attacks.
+Peer-to-peer network: Gossip-style protocol that shares new blocks and transactions among nodes for redundancy.
+Wallets and cryptography: Users sign transactions with private keys, verified with public keys, ensuring authenticity and non-repudiation.
+
+3. Faults, Replication, and Consistency
+
+Bitcoin is tolerant of crashes, message delays, and malicious actors as long as most computing power is honest.
+Each node maintains a full replica of the blockchain. New blocks are broadcast and validated independently by each node.
+Consistency is eventual — all honest nodes eventually agree on the same longest valid chain. Temporary forks can happen but are resolved by proof-of-work.
+
+4. Main Scalability Strategy
+
+Bitcoin scales mainly through replication, not partitioning. Every node stores the full ledger, which ensures integrity but limits throughput.
+The on-chain transaction rate is about seven transactions per second. To scale further, Bitcoin uses off-chain solutions such as the Lightning Network, which settles transactions periodically on the main chain.
+
+5. Major Trade-Off
+
+Bitcoin prioritizes consistency and security over scalability and latency.
+Blocks are confirmed roughly every ten minutes, a deliberate choice to ensure global agreement and resist attacks, at the expense of transaction speed.
+
+6. Distributed Systems Principles Illustrated
+
+CAP theorem: Bitcoin favors consistency and partition tolerance, sacrificing availability during forks or delays.
+Consensus: Uses Nakamoto Consensus (proof-of-work), a probabilistic agreement mechanism unlike deterministic protocols such as Paxos or Raft.
+Byzantine fault tolerance: Achieved through economic incentives, not pure algorithmic agreement.
+
+7. Comparison with Google’s Design
+Bitcoin is decentralized, with no central authority. Google’s systems (like Bigtable or Spanner) are centralized and fully controlled.
+Bitcoin provides probabilistic, eventual consistency, while Google systems provide strong consistency using protocols like Paxos or TrueTime.
+Bitcoin is built for untrusted, adversarial environments; Google’s systems assume trusted infrastructure.
+Bitcoin fully replicates data across all nodes; Google partitions and replicates data across datacenters.
+Bitcoin’s scalability is limited by consensus and security constraints; Google’s scalability focuses on performance and low latency.
+
+8. Lessons and Modern Influence
+
+Bitcoin introduced the idea of trustless consensus and inspired later blockchain protocols (proof-of-stake, etc.).
+It emphasized transparency and auditability — anyone can verify the ledger.
+It demonstrated that economic incentives can stabilize large-scale distributed coordination.
+It shifted system design philosophy from “trust centralized infrastructure” to “verify through cryptography and consensus.”
+
+Summary:
+
+Bitcoin is a decentralized, replicated, fault-tolerant, eventually consistent ledger designed to solve the problem of trust in digital value exchange. It achieves this through probabilistic consensus (proof-of-work) and cryptographic verification, trading scalability and speed for consistency, transparency, and security.
